@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/gradientbackground"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/student"/>
+
+    <TextView
+        android:id="@+id/title_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:text="Update Your Profile"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal"
+        android:text="@string/update_profile_message"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/update_profile"
+        android:layout_gravity="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:text="Update Profile"
+        android:textColor="@color/appBlueTheme"
+        android:layout_margin="10dp"/>
+
+
+
+</LinearLayout>
+

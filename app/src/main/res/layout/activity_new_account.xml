@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:background="@drawable/gradientbackground"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="12">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="Let's Explore Yourself to College Community!"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/registerCollegeIdSpinner"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:hint="College Id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            </Spinner>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    style="@style/editTextFieldStyle"
+                    android:id="@+id/rollnoSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Roll No.(e.g. 17/484)"
+                    android:maxLength="6"
+                    android:inputType="date"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:hint="Course"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/courseSpinnerSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true">
+                </Spinner>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:hint="Branch"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/branchSignUpSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true">
+                </Spinner>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <EditText
+                    style="@style/editTextFieldStyle"
+                    android:id="@+id/nameSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Full Name"
+                    android:inputType="textCapWords"
+                    />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:hint="Gender"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/genderSignUpSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true">
+                </Spinner>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <EditText
+                    style="@style/editTextFieldStyle"
+                    android:id="@+id/dobField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:hint="Date of Birth"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:inputType="textNoSuggestions" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <EditText
+                    style="@style/editTextFieldStyle"
+                    android:id="@+id/emailSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Email Address"
+                    android:inputType="textEmailAddress" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/passwordSignUpInput"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/appBlueTheme"
+                >
+                <EditText
+                    style="@style/editTextFieldStyle"
+                    android:id="@+id/passwordSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <ImageView
+                android:id="@+id/showingCollegeId"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:alpha="0.5"
+                android:src="@drawable/id_card"/>
+
+            <Button
+                android:id="@+id/uploadCollegeIdButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/appBlueTheme"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:text="Upload College Id Card"
+                android:textColor="@color/appWhiteTheme"
+                />
+
+            <TextView
+                android:id="@+id/termsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:linksClickable="true"
+                android:text="By clicking Create Account, you agree to our Terms and confirm that you have read our Data Policy."
+                android:textAlignment="center"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
+            <Button
+                android:id="@+id/signUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/appBlueTheme"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:text="Create Account"
+                android:textColor="@color/appWhiteTheme"
+                />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
+

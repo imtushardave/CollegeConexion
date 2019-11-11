@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/appBlueTheme">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/terms_of_use"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:gravity="center"
+               android:text="TERMS OF USE"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="24sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/about_cc"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/cc_terms"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="Changes to This Terms and Conditions"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/update_cc_terms"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="Contact us"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/contact_us"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+       </LinearLayout>
+
+   </ScrollView>
+</LinearLayout>

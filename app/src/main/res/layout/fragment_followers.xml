@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.cloudiera.collegeconexion.Utils.EmptyRecyclerView
+            android:padding="10dp"
+            android:id="@+id/followers"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.cloudiera.collegeconexion.Utils.EmptyRecyclerView>
+
+        <LinearLayout
+            android:alpha="0.5"
+            android:id="@+id/empty_message_followers"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_followers_empty"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:text="No Followers Yet"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

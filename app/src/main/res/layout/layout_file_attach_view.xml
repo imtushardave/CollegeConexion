@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.codetail.widget.RevealFrameLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="50dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/reveal_items"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"  >
+
+        <android.support.v7.widget.CardView
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="145dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <!-- Camera icons here-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/camera_selection"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/cameradone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Camera" />
+                </LinearLayout>
+                <!-- Gallery icons here-->
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/gallery_selection"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/gallerydone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Gallery" />
+                </LinearLayout>
+                <!--&lt;!&ndash; Audio icons here&ndash;&gt;-->
+                <!--<LinearLayout-->
+
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="vertical">-->
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/audio_selection"-->
+                        <!--android:layout_width="70dp"-->
+                        <!--android:layout_height="70dp"-->
+                        <!--android:background="@drawable/voicedone" />-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginTop="5dp"-->
+                        <!--android:layout_marginBottom="5dp"-->
+                        <!--android:text="Audio" />-->
+                <!--</LinearLayout>-->
+                <!-- Document icons here-->
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/document_selection"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/documentsdone" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="PDF" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </LinearLayout>
+
+</io.codetail.widget.RevealFrameLayout>

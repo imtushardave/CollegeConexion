@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#3f84d2</color>
+    <color name="blueTheme">#3f84d2</color>
+    <color name="darkBlueTheme">#311B92</color>
+    <color name="white">#fff</color>
+    <color name="Black">#000000</color>
+    <color name="appBlueTheme">#3f84d2</color>
+    <color name="appWhiteTheme">#eaeef7</color>
+    <color name="appLightBlueTheme">#4FC3F7</color>
+   <color name="darkGrey">#FF877D81</color>
+    <color name="grey">#c2c2c2</color>
+    <color name="red">#D50000</color>
+    <color name="green">#8BC34A</color>
+    <color name="profile_orange">#eaad43</color>
+    <color name="profile_green">#45bc62</color>
+    <color name="profile_blue">#4FC3F7</color>
+
+    <color name="tabselected">#ffffff</color>
+    <color name="tab_not_selected">#7EC6FF</color>
+</resources>

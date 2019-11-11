@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBlueTheme">
+    <!-- Top View Bar -->
+    <RelativeLayout
+        android:id="@+id/relLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/top_toolbar" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/relLayout1"
+        android:id="@+id/new_club_tabs"
+        android:layout_width="match_parent"
+        android:weightSum="3"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:id="@+id/allUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:textColor="@color/tabselected"
+            android:text="Colleagues"/>
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:id="@+id/followers_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/tab_not_selected"
+            android:text="Followings"/>
+        <TextView
+            android:gravity="center"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:id="@+id/followings_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/tab_not_selected"
+            android:text="Followers"/>
+    </LinearLayout>
+    <!-- Middle View -->
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/new_club_tabs"
+        android:id="@+id/friendsActivityViewpager"
+        android:background="@color/appWhiteTheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+
+    </android.support.v4.view.ViewPager>
+
+        <!-- Bottom Navigation View Bar -->
+        <include
+            android:id="@+id/bottom_navigation_bar"
+            layout="@layout/layout_bottom_navigation_bar" />
+
+</RelativeLayout>

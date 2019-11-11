@@ -1,0 +1,151 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp">
+        <!-- Display Name Field -->
+        <RelativeLayout
+            android:id="@+id/relLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:gravity="center"
+                android:id="@+id/profileNameField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="NAME"
+                android:textColor="@color/appBlueTheme"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                />
+
+        </RelativeLayout>
+        <!--Bio(Tell about Yourself) Field -->
+        <RelativeLayout
+            android:id="@+id/relLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relLayout1"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/grey_border_bottom">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_bio" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="Tell about Yourself" />
+                <EditText
+                    android:textColor="@color/appBlueTheme"
+                    android:id="@+id/bioField"
+                    android:background="@null"
+                    android:minHeight="70dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="start" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <!-- Date of Birth Field -->
+        <RelativeLayout
+            android:id="@+id/relLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/relLayout2"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/grey_border_bottom">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_dob" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="Date of Birth" />
+
+                <EditText
+                    android:id="@+id/dobField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:inputType="textNoSuggestions" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- Mobile Number Field -->
+        <RelativeLayout
+            android:id="@+id/relLayout8"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/relLayout6"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/grey_border_bottom">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_phone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="Phone Number" />
+
+                <EditText
+                    android:id="@+id/phoneNumberField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:maxLength="10"
+                    android:background="@null"
+                    android:inputType="phone" />
+            </LinearLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</merge>

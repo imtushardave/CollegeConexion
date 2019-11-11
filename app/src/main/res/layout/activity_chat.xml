@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    tools:context="com.cloudiera.collegeconexion.Talks.ChatActivity">
+
+    <LinearLayout
+        android:layout_marginTop="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <include layout="@layout/chat_custom_bar"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        app:cardCornerRadius="20dp">
+        <RelativeLayout
+            android:layout_below="@+id/chatToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:alpha="0.5"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/cc_back"
+                />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/chatting_view"
+                android:padding="5dp"
+                android:layout_marginBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <include
+                layout="@layout/layout_file_attach_view"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@android:color/transparent"
+                android:layout_alignParentBottom="true"
+                android:weightSum="10">
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="20dp"
+                    app:cardBackgroundColor="@color/appWhiteTheme"
+                    android:layout_gravity="center"
+                    android:layout_weight="10">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+                        <EditText
+                            android:focusableInTouchMode="false"
+                            android:layout_weight="9"
+                            android:id="@+id/chat_message"
+                            android:layout_marginRight="2dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:minHeight="48dp"
+                            android:layout_gravity="center"
+                            android:background="@null"
+                            android:hint="Write a Message....."
+                            android:textSize="16sp" />
+                        <ImageView
+                            android:id="@+id/chat_attach_file"
+                            android:rotation="130"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_attach_blue"/>
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/chat_messsage_send"
+                    android:layout_width="50dp"
+                    app:cardBackgroundColor="@color/appBlueTheme"
+                    android:layout_marginLeft="2dp"
+
+                    android:layout_marginBottom="2dp"
+                    app:cardCornerRadius="25dp"
+                    android:layout_height="50dp"
+                    >
+                    <ImageView
+                        android:layout_marginLeft="3dp"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_send" />
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+</RelativeLayout>

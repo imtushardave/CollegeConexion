@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    tools:context="com.cloudiera.collegeconexion.NoticeBox.CreateNoticeActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="New Post"/>
+
+        <android.support.v7.widget.CardView
+           android:layout_margin="10dp"
+            android:layout_below="@+id/heading"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!--Notice Description-->
+                    <RelativeLayout
+                        android:id="@+id/relLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_below="@+id/relLayout1"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/grey_border_bottom">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Description" />
+                            <EditText
+                                android:background="@null"
+                                android:id="@+id/post_description"
+                                android:padding="20dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:textSize="18sp"
+                                android:layout_below="@+id/post_image"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="start"
+                                android:hint="Share your Happenings..."/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <!--Notice Attachments-->
+                    <RelativeLayout
+                        android:id="@+id/relLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relLayout2"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/grey_border_bottom">
+
+                        <LinearLayout
+                            android:id="@+id/option"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Attachments" />
+                            <TextView
+                                android:id="@+id/post_image_gallery"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_weight="2"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/appBlueTheme"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Image"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:scaleType="centerCrop"
+                            android:adjustViewBounds="true"
+                            android:id="@+id/post_image"
+                            android:layout_margin="10dp"
+                            android:layout_below="@+id/option"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/banner"/>
+
+                    </RelativeLayout>
+
+
+                    <android.support.v7.widget.AppCompatButton
+                        android:id="@+id/postBtn"
+                        android:backgroundTint="@color/appBlueTheme"
+                        android:text="Post"
+                        android:textColor="@color/white"
+                      android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_below="@+id/relLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+
+                </RelativeLayout>
+            </ScrollView>
+
+        </android.support.v7.widget.CardView>
+
+
+    </RelativeLayout>
+</RelativeLayout>

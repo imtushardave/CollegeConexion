@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <RelativeLayout
+        android:paddingTop="20dp"
+        android:layout_below="@+id/middleRelative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="About"
+               android:textSize="18dp"
+               android:textColor="@color/darkGrey"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="5dp"/>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+                <ImageView
+                    android:id="@+id/courseIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.15"
+                    android:src="@drawable/ic_degree" />
+
+                <LinearLayout
+                    android:layout_weight="0.85"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/course"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkGrey"
+                        android:text="Add Your current Course"/>
+                    <TextView
+                        android:textIsSelectable="true"
+                        android:enabled="true"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:id="@+id/branch"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/Black"
+                        android:text="Add Your Current Branch"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/rollNoLayout"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+                <ImageView
+                    android:id="@+id/rollnoIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.15"
+                    android:src="@drawable/ic_rollno" />
+
+                <LinearLayout
+                    android:layout_weight="0.85"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkGrey"
+                        android:text="Roll No"/>
+                    <TextView
+                        android:textIsSelectable="true"
+                        android:enabled="true"
+                        android:focusable="true"
+                        android:longClickable="true"
+                        android:id="@+id/roll_no"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/Black"
+                        android:text="Add Your Roll No "/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:weightSum="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/dobLayout"
+                android:layout_weight="0.5"
+                android:layout_marginTop="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/dobIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.30"
+                    android:src="@drawable/ic_dob" />
+
+                <LinearLayout
+                    android:layout_weight="0.85"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkGrey"
+                        android:text="Date of Birth"/>
+                    <TextView
+                        android:id="@+id/dob"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/Black"
+                        android:text="Add your Date of birth "/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/genderLayout"
+                android:layout_weight="0.5"
+                android:layout_marginTop="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/genderIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.30"
+                    android:src="@drawable/ic_gender" />
+
+                <LinearLayout
+                    android:layout_weight="0.85"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/darkGrey"
+                        android:text="Gender"/>
+                    <TextView
+                        android:id="@+id/gender"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:paddingBottom="10dp"
+                        android:textColor="@color/Black"
+                        android:text="Add"/>
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</merge>

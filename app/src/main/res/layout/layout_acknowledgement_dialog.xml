@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:background="@color/appBlueTheme">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <TextView
+               android:id="@+id/terms_of_use"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:gravity="center"
+               android:text="@string/acknowledgement"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="24sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/about_acknowledgement"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginLeft="20dp"
+           android:text="******"
+           android:textColor="@color/white"
+           android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="Apache License"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Circle Image View"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright 2014 - 2017 Henning Dodenhof"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Android Image Cropper"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright 2016, Arthur Teplitzki, 2013, Edmodo, Inc."
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Picasso"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright 2013 Square, Inc"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="okhttp"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright 2013 Square, Inc"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Compressor"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright (c) 2016 Zetra."
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Photo View"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Copyright 2017 Chris Banes"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/acknowledgement_apache_licence"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="20dp"
+               android:text="--------------------------------"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="MIT License"
+               android:textStyle="bold"
+               android:textColor="@color/white"
+               android:textSize="16sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Audio Wife"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright (c) 2014 Jaydeep"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Circular Reveal"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:layout_marginBottom="10dp"
+               android:text="Copyright (c) 2016 Abdullaev Ozodrukh"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="BottomNavigationViewEx"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginLeft="20dp"
+               android:text="Copyright (c) 2017 ittianyu"
+               android:layout_marginBottom="10dp"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_margin="20dp"
+               android:text="@string/acknowledgement_mit_licence"
+               android:textColor="@color/white"
+               android:textSize="14sp"/>
+
+
+       </LinearLayout>
+
+   </ScrollView>
+</LinearLayout>

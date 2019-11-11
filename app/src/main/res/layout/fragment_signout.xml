@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradientbackground">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:gravity="center"/>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp">
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/icon_full"/>
+
+            <TextView
+                android:layout_below="@+id/logo"
+                android:id="@+id/tvConfirmSignout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Are you sure you want to sign out?"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/appBlueTheme"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnConfirmSignout"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/tvConfirmSignout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/appBlueTheme"
+                android:text="Sign Out"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/cancelBtnSignOut"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/btnConfirmSignout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/appWhiteTheme"
+                android:text="Cancel"
+                android:textColor="@color/appBlueTheme"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+</RelativeLayout>

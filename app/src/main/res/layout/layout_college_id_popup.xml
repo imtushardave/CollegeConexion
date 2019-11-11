@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="15dp"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/gradientbackground"
+    android:orientation="vertical"
+    android:padding="5dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Your College Details "
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/college_id_popup_auto_view"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </Spinner>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    style="@style/editTextFieldStyle"
+                    android:id="@+id/rollnoSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:hint="College Roll Number"
+                    android:inputType="date"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:hint="Course"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/courseSpinnerSignUp"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true">
+                </Spinner>
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:hint="Branch"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/branchSignUpSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true">
+                </Spinner>
+            </android.support.design.widget.TextInputLayout>
+
+
+            <ImageView
+                android:id="@+id/showingCollegeId"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:alpha="0.5"
+                android:layout_margin="10dp"
+                android:src="@drawable/id_card" />
+
+            <Button
+                android:id="@+id/uploadCollegeIdButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/appBlueTheme"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:text="Upload College Id Card "
+                android:textColor="@color/appWhiteTheme"
+                />
+
+
+            <TextView
+                android:id="@+id/termsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-condensed"
+                android:linksClickable="true"
+                android:text="By clicking Proceed, you agree to our Terms and confirm that you have read our Data Policy."
+                android:textAlignment="center"
+                android:textColorLink="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                />
+
+            <Button
+                android:id="@+id/proceed_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/appBlueTheme"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:text="Proceed"
+                android:textColor="@color/appWhiteTheme"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+

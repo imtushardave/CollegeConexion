@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/post_CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/user_data"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/happenings_profile_image"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/circle_background_happenings"
+                android:src="@drawable/student" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_weight="7"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/happenings_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Profile Name"
+                    android:textColor="@color/darkBlueTheme"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/happenings_post_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Posted on 26/04/2018"
+                    android:textColor="@color/appBlueTheme"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/post_options"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_menu_post_blue" />
+        </LinearLayout>
+
+        <TextView
+            android:textIsSelectable="true"
+            android:enabled="true"
+            android:focusable="true"
+            android:longClickable="true"
+            android:linksClickable="true"
+            android:autoLink="web"
+            android:textColorLink="@color/Black"
+            android:id="@+id/happenings_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Happenings Discription Will appear here"
+            android:textColor="@color/appBlueTheme"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/happenings_post_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/banner" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/like_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/grey_border_right">
+
+                <ImageView
+                    android:id="@+id/likeImage_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ic_like" />
+
+                <TextView
+                    android:id="@+id/total_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="3dp"
+                    android:text="Hi-Fi"
+                    android:textColor="@color/appBlueTheme"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/total_like_post"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text=" Hi-Fied  "
+                android:textSize="14dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

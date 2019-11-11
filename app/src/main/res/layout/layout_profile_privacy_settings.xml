@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/middleRelative"
+        android:layout_marginBottom="50dp"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:background="@drawable/grey_border_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/rollnoIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.10"
+                    android:src="@drawable/ic_rollno" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.70"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:text="Roll No"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/roll_no_privacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:paddingBottom="10dp"
+                        android:text="Add Your Roll No "
+                        android:textColor="@color/Black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <Switch
+                    android:textOn="Show"
+                    android:textOff="Hide"
+                    android:id="@+id/roll_no_switch"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.20"
+                    android:gravity="center" />
+            </LinearLayout>
+
+
+                <LinearLayout
+                    android:background="@drawable/grey_border_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0.5"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:id="@+id/dobIcon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.10"
+                        android:src="@drawable/ic_dob" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.70"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:text="Date of Birth"
+                            android:textColor="@color/darkGrey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/dob_privacy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:paddingBottom="10dp"
+                            android:text="Add your Date of birth "
+                            android:textColor="@color/Black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    <Switch
+                        android:textOn="Show"
+                        android:textOff="Hide"
+                        android:id="@+id/dob_switch"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.20"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:background="@drawable/grey_border_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:id="@+id/genderIcon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.10"
+                        android:src="@drawable/ic_gender" />
+
+                    <LinearLayout
+                        android:layout_gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.70"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:text="Gender"
+                            android:textColor="@color/darkGrey"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/gender_privacy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:paddingBottom="10dp"
+                            android:text="Add"
+                            android:textColor="@color/Black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                    <Switch
+                        android:textOn="Show"
+                        android:textOff="Hide"
+                        android:id="@+id/gender_switch"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.20"
+                        android:gravity="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/grey_border_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="1">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.10"
+                    android:src="@drawable/ic_phone" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.70"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:text="Phone Number"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/phoneNumber_privacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:paddingBottom="10dp"
+                        android:text="Add Phone Number"
+                        android:textColor="@color/Black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+                <Switch
+                    android:textOn="Show"
+                    android:textOff="Hide"
+                    android:id="@+id/phoneNumber_switch"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.20"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/grey_border_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:weightSum="1">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.10"
+                    android:src="@drawable/ic_email" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.70"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:text="Email Id"
+                        android:textColor="@color/darkGrey"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/email_privacy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:paddingBottom="10dp"
+                        android:text="Your Email"
+                        android:textColor="@color/Black"
+                        android:textSize="16sp" />
+                </LinearLayout>
+                <Switch
+                    android:textOn="Show"
+                    android:textOff="Hide"
+                    android:id="@+id/email_switch"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.20"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</merge>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    tools:context="com.cloudiera.collegeconexion.Navigation.PrivacySettingsActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Privacy Settings"
+        android:layout_margin="10dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/white"
+        />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="80dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_profile_privacy_settings"/>
+
+
+            <Button
+                android:id="@+id/saveButton"
+                android:background="@drawable/buttonstyle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="40dp"
+                android:text="Save Changes"
+                android:textColor="@color/white"
+                />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</ScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/blueTheme</item>
+        <!-- Stopping Animation during navigation in bottom navigation bar  -->
+        <!-- specify enter and exit transitions -->
+        <item name="android:windowEnterTransition">@transition/slide</item>
+        <item name="android:windowExitTransition">@transition/fade</item>
+
+    </style>
+    <!-- Edit Text Field Style.-->
+    <style name="editTextFieldStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+    <!--Text View Style.-->
+    <style name="textViewStyle">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+    <!-- Spinner Style.-->
+    <style name="spinnerStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme_Dialog" parent="android:Theme.Holo.Dialog.NoActionBar">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+
+</resources>
