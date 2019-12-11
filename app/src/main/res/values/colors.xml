@@ -20,4 +20,8 @@
 
     <color name="tabselected">#ffffff</color>
     <color name="tab_not_selected">#7EC6FF</color>
+
+    <color name="app_name_color">#4395FF</color>
+    <color name="new_grey_color">#868686</color>
+
 </resources>

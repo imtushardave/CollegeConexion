@@ -106,7 +106,7 @@ public class LogInActivity extends AppCompatActivity  implements ConnectionRecei
     private void init() {
 
         // Initialise the log in Button
-        final Button btnLogIn = (Button) findViewById(R.id.logInButton);
+        final TextView btnLogIn = (TextView) findViewById(R.id.logInButton);
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
