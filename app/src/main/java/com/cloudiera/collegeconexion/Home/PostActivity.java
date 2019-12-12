@@ -6,17 +6,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatButton;
 import android.text.TextUtils;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -139,10 +135,11 @@ public class PostActivity extends AppCompatActivity  implements ConnectionReceiv
                     if (!task.isSuccessful()) {
                         Toast.makeText(mContext, " ERROR!\n Failed to upload post", Toast.LENGTH_SHORT).show();
                     }
-                    Uri downloadUri = task.getResult().getDownloadUrl();
+                    UploadTask.TaskSnapshot taskUri = task.getResult();
+                    String downloadUri = task.getResult().getStorage().getDownloadUrl().toString();
                     //Uplaod post to the database
                     DatabaseReference newPost = mUserPostDatabase.child("user_post").child("rse001").push();
-                    newPost.child("image_uri").setValue(downloadUri.toString());
+                    newPost.child("image_uri").setValue(downloadUri);
                     newPost.child("desc").setValue(description);
                     newPost.child("timestamp").setValue(ServerValue.TIMESTAMP);
                     newPost.child("uid").setValue(mCurrentUser);
@@ -166,10 +163,11 @@ public class PostActivity extends AppCompatActivity  implements ConnectionReceiv
                     if (!task.isSuccessful()) {
                         Toast.makeText(mContext, " ERROR!\n Failed to upload post", Toast.LENGTH_SHORT).show();
                     }
-                    Uri downloadUri = task.getResult().getDownloadUrl();
+
+                    String downloadUri = task.getResult().getStorage().getDownloadUrl().toString();
                     //Uplaod post to the database
                     DatabaseReference newPost = mUserPostDatabase.child("user_post").child("rse001").push();
-                    newPost.child("image_uri").setValue(downloadUri.toString());
+                    newPost.child("image_uri").setValue(downloadUri);
                     newPost.child("desc").setValue("");
                     newPost.child("timestamp").setValue(ServerValue.TIMESTAMP);
                     newPost.child("uid").setValue(mCurrentUser);

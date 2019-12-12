@@ -1,224 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:background="@drawable/gradientbackground"
+    android:background="@color/white"
     android:orientation="vertical">
-    <RelativeLayout
+
+    <LinearLayout
+        android:id="@+id/linLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/ebrimabd"
+            android:gravity="start"
+            android:text="@string/app_name_line"
+            android:textColor="@color/app_name_color"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/ebrima"
+            android:gravity="start"
+            android:text="@string/sign_up_welcome_message"
+            android:textColor="@color/Black"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/welcomeMsgTagline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ebrima"
+            android:gravity="start"
+            android:text="@string/sign_up_welcome_message_tag"
+            android:textColor="@color/new_grey_color"
+            android:textSize="28sp" />
+
         <LinearLayout
-            android:id="@+id/linLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="12">
+            android:layout_marginTop="60dp"
+            android:orientation="vertical">
 
-            <TextView
+
+            <EditText
+                android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:text="Let's Explore Yourself to College Community!"
-                android:textColor="@color/white"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/ebrima"
+                android:gravity="start"
+                android:hint="@string/username"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/new_grey_color"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/registerCollegeIdSpinner"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textColor="@color/white"
-                android:hint="College Id"
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-            </Spinner>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    style="@style/editTextFieldStyle"
-                    android:id="@+id/rollnoSignUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:hint="Roll No.(e.g. 17/484)"
-                    android:maxLength="6"
-                    android:inputType="date"
-                    />
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:hint="Course"
-                android:layout_height="wrap_content">
-                <Spinner
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/courseSpinnerSignUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true">
-                </Spinner>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:hint="Branch"
-                android:layout_height="wrap_content">
-                <Spinner
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/branchSignUpSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true">
-                </Spinner>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
+            <EditText
+                android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-                <EditText
-                    style="@style/editTextFieldStyle"
-                    android:id="@+id/nameSignUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:hint="Full Name"
-                    android:inputType="textCapWords"
-                    />
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:hint="Gender"
-                android:layout_height="wrap_content">
-                <Spinner
-                    android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/genderSignUpSpinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true">
-                </Spinner>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <EditText
-                    style="@style/editTextFieldStyle"
-                    android:id="@+id/dobField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:hint="Date of Birth"
-                    android:focusableInTouchMode="false"
-                    android:focusable="false"
-                    android:inputType="textNoSuggestions" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/ebrima"
+                android:gravity="start"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/new_grey_color"
+                android:textSize="18sp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
+            <EditText
+                android:id="@+id/etRePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-                <EditText
-                    style="@style/editTextFieldStyle"
-                    android:id="@+id/emailSignUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:hint="Email Address"
-                    android:inputType="textEmailAddress" />
-            </android.support.design.widget.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/ebrima"
+                android:gravity="start"
+                android:hint="@string/re_password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/new_grey_color"
+                android:textSize="18sp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/passwordSignUpInput"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/appBlueTheme"
-                >
-                <EditText
-                    style="@style/editTextFieldStyle"
-                    android:id="@+id/passwordSignUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:hint="Password"
-                    android:inputType="textPassword" />
-            </android.support.design.widget.TextInputLayout>
-
-            <ImageView
-                android:id="@+id/showingCollegeId"
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:alpha="0.5"
-                android:src="@drawable/id_card"/>
-
-            <Button
-                android:id="@+id/uploadCollegeIdButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/appBlueTheme"
-                android:textAllCaps="false"
-                android:gravity="center"
-                android:text="Upload College Id Card"
-                android:textColor="@color/appWhiteTheme"
-                />
-
-            <TextView
-                android:id="@+id/termsTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_weight="1"
-                android:fontFamily="sans-serif-condensed"
-                android:linksClickable="true"
-                android:text="By clicking Create Account, you agree to our Terms and confirm that you have read our Data Policy."
-                android:textAlignment="center"
-                android:textColorLink="@color/colorPrimaryDark"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                />
-            <Button
-                android:id="@+id/signUpButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/appBlueTheme"
-                android:textAllCaps="false"
-                android:gravity="center"
-                android:text="Create Account"
-                android:textColor="@color/appWhiteTheme"
-                />
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/signUpPrivacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linLayout"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:fontFamily="@font/ebrima"
+            android:gravity="start"
+            android:text="@string/app_terms_msg"
+            android:textColor="@color/new_grey_color"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTerms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:fontFamily="@font/ebrimabd"
+                android:text="@string/terms"
+                android:textColor="@color/app_name_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/ebrima"
+                android:text="@string/and"
+                android:textColor="@color/new_grey_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvPrivacy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/ebrimabd"
+                android:text="@string/privacy_policy"
+                android:textColor="@color/app_name_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ebrima"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textColor="@color/app_name_color"
+            android:textSize="28sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/oldAccountLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signUpPrivacy"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fontFamily="@font/ebrima"
+            android:text="@string/old_account"
+            android:textColor="@color/new_grey_color"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/ebrimabd"
+            android:text="@string/sign_in"
+            android:textColor="@color/new_grey_color"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/progress_signUp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_rawRes="@raw/loading_bar"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"/>
 
     </RelativeLayout>
-</ScrollView>
+
+    <include layout="@layout/layout_new_account_step"/>
+
+</RelativeLayout>
+
+
+
+
 

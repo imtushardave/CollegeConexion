@@ -14,15 +14,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -677,7 +677,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                         mRootRef.child("Chat").child(mChatUser).child(mCurrentUser).child("timestamp").setValue(ServerValue.TIMESTAMP);
 
                         Map messageMap = new HashMap();
-                        messageMap.put("message", taskSnapshot.getDownloadUrl().toString());
+                        messageMap.put("message", taskSnapshot.getStorage().getDownloadUrl().toString());
                         messageMap.put("from", mCurrentUser);
                         messageMap.put("type", "pdf");
                         messageMap.put("seen", false);
@@ -744,12 +744,12 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                 if (task.isSuccessful()) {
-                    Uri downloadUri = task.getResult().getDownloadUrl();
+                    String downloadUri = task.getResult().getStorage().getDownloadUrl().toString();
                     final String current_user_ref = "messages/" + mCurrentUser + "/" + mChatUser;
                     final String chat_user_ref = "messages/" + mChatUser + "/" + mCurrentUser;
 
                     Map messageMap = new HashMap();
-                    messageMap.put("message", downloadUri.toString());
+                    messageMap.put("message", downloadUri);
                     messageMap.put("seen", false);
                     messageMap.put("type", "image");
                     messageMap.put("time", ServerValue.TIMESTAMP);
@@ -820,7 +820,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                         mRootRef.child("Chat").child(mChatUser).child(mCurrentUser).child("timestamp").setValue(ServerValue.TIMESTAMP);
 
                         Map messageMap = new HashMap();
-                        messageMap.put("message", taskSnapshot.getDownloadUrl().toString());
+                        messageMap.put("message", taskSnapshot.getStorage().getDownloadUrl().toString());
                         messageMap.put("from", mCurrentUser);
                         messageMap.put("type", "image");
                         messageMap.put("seen", false);

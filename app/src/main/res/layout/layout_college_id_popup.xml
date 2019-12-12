@@ -36,7 +36,7 @@
             </Spinner>
 
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -50,9 +50,9 @@
                     android:hint="College Roll Number"
                     android:inputType="date"
                     />
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:hint="Course"
@@ -65,8 +65,8 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true">
                 </Spinner>
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:hint="Branch"
@@ -79,7 +79,7 @@
                     android:layout_height="50dp"
                     android:layout_centerVertical="true">
                 </Spinner>
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <ImageView

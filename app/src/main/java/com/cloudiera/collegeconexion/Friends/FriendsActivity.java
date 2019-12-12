@@ -4,17 +4,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.TransitionInflater;
+import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -72,7 +70,7 @@ public class FriendsActivity extends AppCompatActivity implements ConnectionRece
 
 
         setupFireBaseAuth();
-        setupBottomNavigation();
+        //setupBottomNavigation();
         setupToolbar();
         setupTabs();
         myRef = FirebaseDatabase.getInstance().getReference()
@@ -204,19 +202,19 @@ public class FriendsActivity extends AppCompatActivity implements ConnectionRece
     /**
      * Setup the Bottom Navigation Bar
      */
-    private void setupBottomNavigation(){
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation);
-        if(bottomNavigationViewEx!=null){
-            BottomNavigationViewHelper.setupBottomNavigation(bottomNavigationViewEx);
-            BottomNavigationViewHelper.enableNavigation(mContext,bottomNavigationViewEx);
-            Menu menu = bottomNavigationViewEx.getMenu();
-            MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
-            menuItem.setChecked(true);
-        }
-        else{
-            Log.i("Object Is Null ::","What is the Reason");
-        }
-    }
+//    private void setupBottomNavigation(){
+//        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottom_navigation);
+//        if(bottomNavigationViewEx!=null){
+//            BottomNavigationViewHelper.setupBottomNavigation(bottomNavigationViewEx);
+//            BottomNavigationViewHelper.enableNavigation(mContext,bottomNavigationViewEx);
+//            Menu menu = bottomNavigationViewEx.getMenu();
+//            MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+//            menuItem.setChecked(true);
+//        }
+//        else{
+//            Log.i("Object Is Null ::","What is the Reason");
+//        }
+//    }
 
 
      /*

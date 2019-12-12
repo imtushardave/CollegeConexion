@@ -4,17 +4,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -35,7 +32,6 @@ import com.cloudiera.collegeconexion.R;
 import com.cloudiera.collegeconexion.Utils.BottomNavigationViewHelper;
 import com.cloudiera.collegeconexion.ConnectionReceiver;
 import com.cloudiera.collegeconexion.Utils.EmptyRecyclerView;
-import com.cloudiera.collegeconexion.Utils.SectionPagerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,8 +49,6 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static java.security.AccessController.getContext;
 
 public class TalksActivity extends AppCompatActivity  implements ConnectionReceiver.ConnectionReceiverListener {
 
@@ -90,7 +84,7 @@ public class TalksActivity extends AppCompatActivity  implements ConnectionRecei
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talks);
         checkConnection();
-        setupBottomNavigation();
+      //  setupBottomNavigation();
         setupToolbar();
         setupFireBaseAuth();
         myRef = FirebaseDatabase.getInstance().getReference()

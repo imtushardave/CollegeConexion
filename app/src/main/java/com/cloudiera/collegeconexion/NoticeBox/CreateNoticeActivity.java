@@ -5,8 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,14 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cloudiera.collegeconexion.R;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -36,8 +31,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -116,7 +109,7 @@ public class CreateNoticeActivity extends AppCompatActivity {
 
                             }else{
 
-                                StorageReference noticeStorage = FirebaseStorage.getInstance().getReference()
+                                final StorageReference noticeStorage = FirebaseStorage.getInstance().getReference()
                                         .child("notice_box").child(push_key +".jpg");
                                 mProgress.setMessage("Uploading Image");
                                 noticeStorage.putFile(resultImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -125,7 +118,10 @@ public class CreateNoticeActivity extends AppCompatActivity {
 
                                         if(task.isSuccessful()){
                                             noticePost.put("type","image");
-                                            noticePost.put("imageUri",task.getResult().getDownloadUrl().toString());
+
+                                            UploadTask.TaskSnapshot taskUri = task.getResult();
+
+                                            noticePost.put("imageUri",taskUri.getStorage().getDownloadUrl().toString());
 
                                             noticeDatabase.child("pending_notice").child(push_key).updateChildren(noticePost, new DatabaseReference.CompletionListener() {
                                                 @Override

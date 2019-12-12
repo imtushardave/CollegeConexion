@@ -1,0 +1,160 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/rlStep2"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/ebrimabd"
+            android:gravity="start"
+            android:text="@string/app_name_line"
+            android:textColor="@color/app_name_color"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/welcomeMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/ebrima"
+            android:gravity="start"
+            android:text="@string/sign_up_step2_welcome_message"
+            android:textColor="@color/Black"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/welcomeMsgTagline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ebrima"
+            android:gravity="start"
+            android:text="@string/sign_up_step2_welcome_message_tag"
+            android:textColor="@color/new_grey_color"
+            android:textSize="28sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etFirstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/ebrima"
+                    android:gravity="start"
+                    android:hint="@string/first_name"
+                    android:inputType="text"
+                    android:textColorHint="@color/new_grey_color"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:id="@+id/etLastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/ebrima"
+                    android:gravity="start"
+                    android:hint="@string/last_name"
+                    android:inputType="text"
+                    android:textColorHint="@color/new_grey_color"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/ebrima"
+                android:gravity="start"
+                android:hint="@string/user_name_hint"
+                android:inputType="text"
+                android:textColorHint="@color/new_grey_color"
+                android:textSize="18sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/etCollegeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/ebrima"
+                android:gravity="start"
+                android:hint="@string/college_name_hint"
+                android:backgroundTint="@color/white"
+                android:textColorHint="@color/new_grey_color"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ebrima"
+                android:gravity="end"
+                android:hint="@string/college_help"
+                android:backgroundTint="@color/white"
+                android:textColorHint="@color/new_grey_color"
+                android:textSize="14sp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/finalButton"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/app_name_color">
+
+            <TextView
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/letsgo"
+                android:textSize="28sp"
+                android:fontFamily="@font/ebrima"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</merge>

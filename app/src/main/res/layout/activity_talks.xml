@@ -13,7 +13,7 @@
         <include layout="@layout/top_toolbar" />
     </RelativeLayout>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_below="@+id/relLayout1"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
@@ -55,9 +55,9 @@
 
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <!-- Bottom Navigation View Bar -->
-    <include layout="@layout/layout_bottom_navigation_bar" />
+<!--    &lt;!&ndash; Bottom Navigation View Bar &ndash;&gt;-->
+<!--    <include layout="@layout/layout_bottom_navigation_bar" />-->
 
 </RelativeLayout>

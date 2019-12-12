@@ -83,13 +83,13 @@
             <!--android:src="@drawable/ic_menu_post_white"/>-->
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:layout_below="@+id/academic_data"
         android:id="@+id/subject_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
 
 </RelativeLayout>

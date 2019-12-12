@@ -50,7 +50,7 @@
             android:text="Followers"/>
     </LinearLayout>
     <!-- Middle View -->
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:layout_below="@+id/new_club_tabs"
         android:id="@+id/friendsActivityViewpager"
         android:background="@color/appWhiteTheme"
@@ -58,11 +58,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp">
 
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
         <!-- Bottom Navigation View Bar -->
-        <include
-            android:id="@+id/bottom_navigation_bar"
-            layout="@layout/layout_bottom_navigation_bar" />
+<!--        <include-->
+<!--            android:id="@+id/bottom_navigation_bar"-->
+<!--            layout="@layout/layout_bottom_navigation_bar" />-->
 
 </RelativeLayout>

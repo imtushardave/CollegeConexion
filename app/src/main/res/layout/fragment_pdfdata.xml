@@ -6,7 +6,7 @@
     android:background="@drawable/gradientbackground"
     tools:context="com.cloudiera.collegeconexion.Resources.BooksFragment">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         app:cardCornerRadius="20dp"
@@ -21,7 +21,7 @@
             android:textStyle="bold"
             android:text="Due to Copyright issues \nPDF of the books is not \navailable for a while."/>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

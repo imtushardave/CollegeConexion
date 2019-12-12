@@ -4,14 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -28,7 +28,6 @@ import com.cloudiera.collegeconexion.ConnectionReceiver;
 import com.cloudiera.collegeconexion.Friends.ShowingFriendsProfile;
 import com.cloudiera.collegeconexion.Models.NoticeModel;
 import com.cloudiera.collegeconexion.Navigation.AccountSettingsActivity;
-import com.cloudiera.collegeconexion.Profile.EditProfileActivity;
 import com.cloudiera.collegeconexion.Profile.ProfileActivity;
 import com.cloudiera.collegeconexion.R;
 import com.cloudiera.collegeconexion.Talks.SearchUserActivity;
@@ -82,7 +81,7 @@ public class NoticeBoxActivity extends AppCompatActivity implements ConnectionRe
         noticeView.setHasFixedSize(true);
         noticeView.setLayoutManager(linearLayoutManager);
 
-        setupBottomNavigation();
+       // setupBottomNavigation();
         setupToolbar();
         setupWidgets();
 

@@ -16,7 +16,7 @@
         android:gravity="center"
         android:textColor="@color/white"/>
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_marginTop="60dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -82,7 +82,7 @@
 
             </RelativeLayout>
             </ScrollView>
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>

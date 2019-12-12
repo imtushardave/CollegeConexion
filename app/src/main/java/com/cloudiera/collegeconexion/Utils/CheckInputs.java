@@ -12,13 +12,13 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.google.android.gms.internal.zzt.TAG;
-
 /**
  * Created by HP on 20-Dec-17.
  */
 
 public class CheckInputs {
+
+    private static final String TAG = "CheckInputs";
 
     private static final int MAX_LENGTH = 15 ;
 

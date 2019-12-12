@@ -152,4 +152,21 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/progress_login"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_rawRes="@raw/loading_bar"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"/>
+
+    </RelativeLayout>
+
 </RelativeLayout>

@@ -8,20 +8,18 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,11 +31,8 @@ import com.cloudiera.collegeconexion.ConnectionReceiver;
 import com.cloudiera.collegeconexion.Utils.FirebaseMethods;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,17 +51,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 import id.zelory.compressor.Compressor;
-
-import static com.cloudiera.collegeconexion.R.id.branch;
-import static com.cloudiera.collegeconexion.R.id.course;
-import static com.cloudiera.collegeconexion.R.id.profileName;
-import static com.cloudiera.collegeconexion.R.id.roll_no;
 
 /**
  * Created by HP on 07-Dec-17.
@@ -216,14 +205,17 @@ public class EditProfileActivity extends AppCompatActivity implements Connection
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: Profile Image uploaded Successfully");
 
-                            @SuppressWarnings("VisibleForTests") final String imageUri = task.getResult().getDownloadUrl().toString();
+                            UploadTask.TaskSnapshot taskUri = task.getResult();
+
+                            @SuppressWarnings("VisibleForTests") final String imageUri = taskUri.getStorage().getDownloadUrl().toString();
 
                             UploadTask uploadTask  = thumb_filepath.putBytes(thumb_byte);
                             uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
-                                    @SuppressWarnings("VisibleForTests") String thumb_downloadUrl = task.getResult().getDownloadUrl().toString();
+                                    UploadTask.TaskSnapshot taskUri = task.getResult();
+                                    @SuppressWarnings("VisibleForTests") String thumb_downloadUrl = taskUri.getStorage().getDownloadUrl().toString();
 
                                     if(task.isSuccessful()){
                                           // Update profile_img_thumb
