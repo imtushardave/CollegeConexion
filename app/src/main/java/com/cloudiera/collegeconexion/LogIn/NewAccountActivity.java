@@ -215,6 +215,7 @@ public class NewAccountActivity extends AppCompatActivity{
 
                             Map<String,Object> usernameMap=new HashMap<String, Object>();
                             usernameMap.put("username",username);
+                            usernameMap.put("userId", mAuth.getCurrentUser().getUid());
 
                             firebaseFirestore.collection("Usernames")
                                     .document(username)
@@ -282,8 +283,6 @@ public class NewAccountActivity extends AppCompatActivity{
 
                             mProgress.setVisibility(View.GONE);
 
-
-
                         } else{
                             mProgress.setVisibility(View.GONE);
                             Log.d(TAG, "onComplete: TASK RESULT " + task.getResult());
@@ -292,18 +291,6 @@ public class NewAccountActivity extends AppCompatActivity{
                         }
                     }
                 });
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
 
     }
 
