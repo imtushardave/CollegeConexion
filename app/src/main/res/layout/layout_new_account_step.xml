@@ -3,7 +3,7 @@
     <RelativeLayout
         android:id="@+id/rlStep2"
         android:background="@color/white"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

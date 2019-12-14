@@ -13,11 +13,12 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_TABLE_NAME = "user";
     public static final String CONTACTS_COLUMN_ID = "id";
     public static final String CONTACTS_COLUMN_USERNAME = "username";
-    public static final String CONTACTS_COLUMN_NAME = "name";
+    public static final String CONTACTS_COLUMN_FNAME = "fname";
+    public static final String CONTACTS_COLUMN_LNAME = "lname";
     public static final String CONTACTS_COLUMN_EMAIL = "email";
     public static final String CONTACTS_COLUMN_IMAGE = "image";
     public static final String CONTACTS_COLUMN_PASS = "password";
-    public static final String CONTACTS_COLUMN_COLLEGE_NAME = "college_name";
+    public static final String CONTACTS_COLUMN_COLLEGE_ID = "college_id";
     public static final String CONTACTS_COLUMN_BIO = "bio";
 
     public UserDatabaseHelper(@Nullable Context context) {
@@ -27,7 +28,8 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "CREATE TABLE user " + "(id integer PRIMARY KEY,username text, name text,email text,password text,image text,college_name text,bio text)"
+                "CREATE TABLE user " + "(id integer PRIMARY KEY,username text, fname text, " +
+                        "lname text,email text,password text,image text,college_id text,bio text)"
         );
     }
 
@@ -37,15 +39,17 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertContact(String username, String name, String email, String image, String password, String college_name, String bio) {
+    public void insertContact(String username, String fname,String lname, String email, String image,
+                              String password, String college_id, String bio) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", username);
-        contentValues.put("name", name);
+        contentValues.put("fname", fname);
+        contentValues.put("lname", lname);
         contentValues.put("email", email);
         contentValues.put("password", password);
         contentValues.put("image", image);
-        contentValues.put("college_name", college_name);
+        contentValues.put("college_id", college_id);
         contentValues.put("bio", bio);
         db.insert("user", null, contentValues);
     }
@@ -54,4 +58,12 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery( "select * from user where id="+id+"", null );
     }
+
+    public Integer deleteContact (Integer id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("user",
+                "id = ? ",
+                new String[] { Integer.toString(id) });
+    }
 }
+

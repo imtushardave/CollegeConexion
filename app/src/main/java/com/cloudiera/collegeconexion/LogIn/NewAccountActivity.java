@@ -9,12 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -47,7 +47,6 @@ public class NewAccountActivity extends AppCompatActivity{
     // FIREBASE
     private FirebaseAuth mAuth;
     private FirebaseFirestore firebaseFirestore;
-    private FirebaseMethods fireBaseMethods;
     private DatabaseReference myRef;
 
     //XML FIELDS
@@ -58,8 +57,9 @@ public class NewAccountActivity extends AppCompatActivity{
     private TextView mFinalButton;
 
     // OTHER VARIABLES
-    private String email, password, rePassword, firstname, lastname, username, collegename;
-    private ArrayList<String> mCollegeList;
+    private String email, password, rePassword, firstname, lastname, username, collegeId;
+    private HashMap<String,String> mCollegeMap;
+    private FirebaseMethods fireBaseMethods;
 
 
     @Override
@@ -67,28 +67,31 @@ public class NewAccountActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_account);
 
+        // HIDE THE KEYBOARD ON OPENING ACTIVITY
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+        // INITIALIZE ALL THE VARIABLES AND FIELDS USED IN THE ACTIVITY
+        initializeFields();
+
+        // SETUP CLICK LISTENERS FOR REQUIRED FIELDS
+        setupListeners();
+
+    }
+
+    // THIS FUNCTION INITIALIZE ALL THE FIELDS AND VARIABLES
+    private void initializeFields() {
+
         // SETUP FIREBASE VARIABLE
         firebaseFirestore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        // SETUP THE PROGRESS DIALOG AND FIREBASE METHODS FOR ACCOUNT CREATION
+        // SETUP FIREBASE METHODS FOR ACCOUNT CREATION
         fireBaseMethods = new FirebaseMethods(mContext);
+
         mProgress = findViewById(R.id.progress_signUp);
         mStep2 = findViewById(R.id.rlStep2);
 
-        // HIDE THE KEYBOARD ON OPENING ACTIVITY
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-        //INITIALIZE THE WIDGETS FOR THE LAYOUT
-        initSetupWidgets();                          //SETUP WIDGETS
-
-    }
-
-
-    private void initSetupWidgets() {
-
-        Log.d(TAG, "initSetupWidgets:  Initializing all the widgets");
-
+        // XML FIELDS
         mEmail = findViewById(R.id.etEmail);
         mPassword = findViewById(R.id.etPassword);
         mRePassword = findViewById(R.id.etRePassword);
@@ -97,7 +100,7 @@ public class NewAccountActivity extends AppCompatActivity{
         mUsername = findViewById(R.id.etUsername);
 
         mCollegeSpinner = findViewById(R.id.spiCollegeName);
-        mCollegeList = new ArrayList<>();
+        mCollegeMap = new HashMap<>();
 
         mTerms = findViewById(R.id.tvTerms);
         mPrivacy = findViewById(R.id.tvPrivacy);
@@ -106,12 +109,75 @@ public class NewAccountActivity extends AppCompatActivity{
         mSignUp = findViewById(R.id.tvSignUp);
         mFinalButton = findViewById(R.id.finalButton);
 
-        setupCollegeList();        // GET COLLEGE LIST FROM THE DATABASE
-        getWidgetsData();         // GET DATA FROM WIDGETS
+        // GET COLLEGE LIST FROM THE DATABASE
+        setupCollegeList();
 
 
     }
 
+    // THIS FUNCTION SETUP LISTENERS FOR THE FIELDS
+    private void setupListeners() {
+
+        //  SETUP THE SIGNIN BUTTON
+        mSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        //  ENABLE ENTER BUTTON ON KEYBOARD TO CALL SUBMIT BUTTON
+        mRePassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Log.i(TAG,"Enter pressed");
+
+                    email = mEmail.getText().toString().trim();
+                    password = mPassword.getText().toString().trim();
+                    rePassword = mRePassword.getText().toString().trim();
+
+                    // VALIDATING ALL THE INPUTS
+                    if (validateInputs(email, password, rePassword)) {
+                        mStep2.setVisibility(View.VISIBLE);
+                    }else{
+                        mStep2.setVisibility(View.GONE);
+                    }
+
+                }
+                return false;
+            }
+        });
+
+
+        // SETTING ON-CLICK LISTENER FOR SIGN-UP BUTTON
+        mSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                email = mEmail.getText().toString().trim();
+                password = mPassword.getText().toString().trim();
+                rePassword = mRePassword.getText().toString().trim();
+
+                // VALIDATING ALL THE INPUTS
+                if (validateInputs(email, password, rePassword)) {
+                    mStep2.setVisibility(View.VISIBLE);
+                }else{
+                    mStep2.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+        // SETTING ON-CLICK LISTENER FOR LET'S CONNECT BUTTON
+        mFinalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               prepareRegistration();
+            }
+        });
+    }
+
+    // THIS FUNCTION SETUP COLLEGE LIST FOR SPINNER FROM DATABASE
     private void setupCollegeList() {
 
         //QUERYING LIST OF COLLEGE PROFILES
@@ -121,13 +187,15 @@ public class NewAccountActivity extends AppCompatActivity{
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                        //ADDING ALL COLLEGE NAMES INTO THE COLLEGE LIST
+                        HashMap<String,String> collegeMap = new HashMap<>();
+
+                        //ADDING ALL COLLEGE NAMES AND ID'S INTO THE HASHMAP
                         for(DocumentSnapshot collegeProfile : queryDocumentSnapshots.getDocuments()){
-                                mCollegeList.add(collegeProfile.get("name").toString());
+                            collegeMap.put(collegeProfile.get("name").toString(),collegeProfile.getId());
                         }
 
                         //SETUP COLLEGE LIST TO THE SPINNER
-                        setupCollegeListAdapter(mCollegeList);
+                        setupCollegeListAdapter(collegeMap);
 
                     }
                 })
@@ -140,17 +208,21 @@ public class NewAccountActivity extends AppCompatActivity{
 
     }
 
-    private void setupCollegeListAdapter(ArrayList<String> mCollegeList) {
+    //THIS FUNCTION SET COLLGELIST TO THE ADPAPTER
+    private void setupCollegeListAdapter(HashMap<String,String> collegeMap) {
 
-        Log.d(TAG, "setupCollegeListAdapter: " + mCollegeList);
+        ArrayList<String> collegeList = new ArrayList<>(collegeMap.keySet());
+        Log.d(TAG, "setupCollegeListAdapter: " + collegeList);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this, android.R.layout.select_dialog_item, mCollegeList);
+                (this, android.R.layout.select_dialog_item, collegeList);
 
+        mCollegeMap = collegeMap;
         mCollegeSpinner.setAdapter(adapter);
 
     }
 
-
+    // THIS FUNCTION VALIDATES ALL THE INPUTS
     private boolean validateInputs(String email, String password, String rePassword) {
 
         // CHECK WHETHER THE INPUTS ARE NULL ARE NOT
@@ -180,86 +252,7 @@ public class NewAccountActivity extends AppCompatActivity{
         return true;
     }
 
-
-    private void getWidgetsData() {
-
-        //  SETUP THE SIGNIN BUTTON
-        mSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(mContext, LogInActivity.class));
-
-            }
-        });
-
-        // SETTING ON-CLICK LISTENER FOR SIGN-UP BUTTON
-        mSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                email = mEmail.getText().toString();
-                password = mPassword.getText().toString();
-                rePassword = mRePassword.getText().toString();
-
-                // VALIDATING ALL THE INPUTS
-                if (validateInputs(email, password, rePassword)) {
-                    mStep2.setVisibility(View.VISIBLE);
-                }else{
-                    mStep2.setVisibility(View.GONE);
-                }
-            }
-        });
-
-        // SETTING ON-CLICK LISTENER FOR LET'S CONNECT BUTTON
-        mFinalButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.d(TAG, "onClick: Attempting to create New account for the user");
-
-                firstname = mFirstName.getText().toString();
-                lastname = mLastName.getText().toString();
-                username = mUsername.getText().toString();
-                collegename = mUsername.getText().toString();
-
-                // CHECK WHETHER INPUTS ARE EMPTY ARE NOT
-                if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(firstname) && !TextUtils.isEmpty(lastname)
-                    && !TextUtils.isEmpty(collegename)){
-
-                    //ENABLE PROGRESS BAR
-                    mProgress.setVisibility(View.VISIBLE);
-
-                    //CHECK FOR THE AVAILABILITY OF THE USERNAME
-                    firebaseFirestore.collection("Usernames")
-                            .document(username)
-                            .get()
-                            .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    if(!documentSnapshot.exists()){
-                                        startRegistration();
-                                    }else{
-                                        mProgress.setVisibility(View.GONE);
-                                        Toast.makeText(mContext, "Username Already Exist!", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    mProgress.setVisibility(View.GONE);
-                                    Toast.makeText(mContext, "Something went wrong. Please try again later!", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }else {
-                    mProgress.setVisibility(View.GONE);
-                    Toast.makeText(mContext, "Some Fields are empty!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-
+    // THIS FUNCTION START'S REGISTRATION PROCESS
     private void startRegistration() {
 
         // CREATING NEW ACCOUNT FOR THE USER
@@ -301,7 +294,7 @@ public class NewAccountActivity extends AppCompatActivity{
                                                             userMap.put("fname", firstname);
                                                             userMap.put("lname", lastname);
                                                             userMap.put("username", username);
-                                                            userMap.put("college_name", collegename);
+                                                            userMap.put("college_Id", collegeId);
                                                             userMap.put("verified", false);
                                                             userMap.put("email", email);
                                                             userMap.put("bio",getString(R.string.default_bio));
@@ -312,9 +305,12 @@ public class NewAccountActivity extends AppCompatActivity{
                                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                         @Override
                                                                         public void onComplete(@NonNull Task<Void> task) {
+
                                                                             Toast.makeText(NewAccountActivity.this, "Verification Email Sent", Toast.LENGTH_SHORT).show();
                                                                             finish();
                                                                             mProgress.setVisibility(View.GONE);
+
+
                                                                         }
                                                                     })
                                                                     .addOnFailureListener(new OnFailureListener() {
@@ -354,6 +350,51 @@ public class NewAccountActivity extends AppCompatActivity{
                         }
                     }
                 });
+
+    }
+
+    //THIS FUNCTION PREPARE DATA FOR REGISTRATION PROCESS
+    private void prepareRegistration(){
+        Log.d(TAG, "onClick: Attempting to create New account for the user");
+
+        firstname = mFirstName.getText().toString().trim();
+        lastname = mLastName.getText().toString().trim();
+        username = mUsername.getText().toString().toLowerCase().trim();
+        collegeId = mCollegeMap.get(mCollegeSpinner.getSelectedItem().toString());
+
+        // CHECK WHETHER INPUTS ARE EMPTY ARE NOT
+        if(!TextUtils.isEmpty(username) && !TextUtils.isEmpty(firstname) && !TextUtils.isEmpty(lastname)
+                && !TextUtils.isEmpty(collegeId)){
+
+            //ENABLE PROGRESS BAR
+            mProgress.setVisibility(View.VISIBLE);
+
+            //CHECK FOR THE AVAILABILITY OF THE USERNAME
+            firebaseFirestore.collection("Usernames")
+                    .document(username)
+                    .get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if(!documentSnapshot.exists()){
+                                startRegistration();
+                            }else{
+                                mProgress.setVisibility(View.GONE);
+                                Toast.makeText(mContext, "Username Already Exist!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            mProgress.setVisibility(View.GONE);
+                            Toast.makeText(mContext, "Something went wrong. Please try again later!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }else {
+            mProgress.setVisibility(View.GONE);
+            Toast.makeText(mContext, "Some Fields are empty!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
