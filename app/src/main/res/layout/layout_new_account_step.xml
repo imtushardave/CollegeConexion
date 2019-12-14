@@ -3,7 +3,7 @@
     <RelativeLayout
         android:id="@+id/rlStep2"
         android:background="@color/white"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -11,6 +11,8 @@
         android:id="@+id/linLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="25dp"
@@ -21,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="@font/ebrimabd"
+            android:fontFamily="@font/helvatikabold"
             android:gravity="start"
             android:text="@string/app_name_line"
             android:textColor="@color/app_name_color"
@@ -33,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:fontFamily="@font/ebrima"
+            android:fontFamily="@font/helvlight_regular"
             android:gravity="start"
             android:text="@string/sign_up_step2_welcome_message"
             android:textColor="@color/Black"
@@ -43,7 +45,7 @@
             android:id="@+id/welcomeMsgTagline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ebrima"
+            android:fontFamily="@font/helvlight_regular"
             android:gravity="start"
             android:text="@string/sign_up_step2_welcome_message_tag"
             android:textColor="@color/new_grey_color"
@@ -60,52 +62,71 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
-                <EditText
-                    android:layout_weight="1"
-                    android:id="@+id/etFirstname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/ebrima"
-                    android:gravity="start"
-                    android:hint="@string/first_name"
-                    android:inputType="text"
-                    android:textColorHint="@color/new_grey_color"
-                    android:textSize="18sp" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_weight="1"
-                    android:id="@+id/etLastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/ebrima"
-                    android:gravity="start"
-                    android:hint="@string/last_name"
-                    android:inputType="text"
-                    android:textColorHint="@color/new_grey_color"
-                    android:textSize="18sp" />
+                    android:background="@drawable/bgedittext"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginRight="4dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFirstname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvlight_regular"
+                        android:hint="@string/first_name"
+                        android:inputType="text"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:paddingStart="14dp"
+                        android:paddingLeft="14dp"
+                        android:textSize="16sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bgedittext"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etLastname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/helvlight_regular"
+                        android:hint="@string/last_name"
+                        android:inputType="text"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="14dp"
+                        android:paddingBottom="14dp"
+                        android:paddingStart="14dp"
+                        android:paddingLeft="14dp"
+                        android:textSize="16sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-
-            <EditText
-                android:id="@+id/etUsername"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/ebrima"
-                android:gravity="start"
-                android:hint="@string/user_name_hint"
-                android:inputType="text"
-                android:textColorHint="@color/new_grey_color"
-                android:textSize="18sp" />
+                android:background="@drawable/bgedittext">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/helvlight_regular"
+                    android:hint="@string/user_name_hint"
+                    android:inputType="text"
+                    android:background="@android:color/transparent"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:paddingStart="14dp"
+                    android:paddingLeft="14dp"
+                    android:textSize="16sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <AutoCompleteTextView
                 android:id="@+id/etCollegeName"
@@ -124,7 +145,7 @@
                 android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/ebrima"
+                android:fontFamily="@font/helvlight_regular"
                 android:gravity="end"
                 android:hint="@string/college_help"
                 android:backgroundTint="@color/white"
@@ -136,25 +157,18 @@
 
     </LinearLayout>
 
-        <LinearLayout
+        <TextView
             android:id="@+id/finalButton"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/app_name_color">
-
-            <TextView
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="@string/letsgo"
-                android:textSize="28sp"
-                android:fontFamily="@font/ebrima"/>
-
-        </LinearLayout>
+            android:layout_height="56dp"
+            android:textColor="@color/white"
+            android:text="@string/letsgo"
+            android:textSize="28sp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/app_name_color"
+            android:fontFamily="@font/helvlight_regular"/>
 
     </RelativeLayout>
 </merge>
