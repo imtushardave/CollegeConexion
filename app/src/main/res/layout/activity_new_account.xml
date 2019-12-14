@@ -8,20 +8,21 @@
     android:orientation="vertical">
 
             <LinearLayout
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:id="@+id/linLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="25dp"
-                android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:fontFamily="@font/ebrimabd"
+                    android:fontFamily="@font/helvatikabold"
                     android:gravity="start"
                     android:text="@string/app_name_line"
                     android:textColor="@color/app_name_color"
@@ -33,70 +34,88 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
-                    android:fontFamily="@font/ebrima"
+                    android:fontFamily="@font/helvlight_regular"
                     android:gravity="start"
                     android:text="@string/sign_up_welcome_message"
                     android:textColor="@color/Black"
-                    android:textSize="28sp" />
+                    android:textSize="26sp" />
 
                 <TextView
                     android:id="@+id/welcomeMsgTagline"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/ebrima"
+                    android:fontFamily="@font/helvlight_regular"
                     android:gravity="start"
                     android:text="@string/sign_up_welcome_message_tag"
                     android:textColor="@color/new_grey_color"
-                    android:textSize="28sp" />
+                    android:textSize="26sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="30dp"
                     android:orientation="vertical">
 
-
-                    <EditText
-                        android:id="@+id/etEmail"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/letEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/ebrima"
-                        android:gravity="start"
-                        android:hint="@string/username"
-                        android:inputType="textEmailAddress"
-                        android:textColorHint="@color/new_grey_color"
-                        android:textSize="18sp" />
+                        android:background="@drawable/bgedittext">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/helvlight_regular"
+                            android:hint="@string/Email"
+                            android:background="@android:color/transparent"
+                            android:inputType="textEmailAddress"
+                            android:paddingStart="14dp"
+                            android:paddingLeft="14dp"
+                            android:paddingTop="14dp"
+                            android:paddingBottom="14dp"
+                            android:textSize="16sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/etPassword"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/letPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/ebrima"
-                        android:gravity="start"
-                        android:hint="@string/password"
-                        android:inputType="textPassword"
-                        android:textColorHint="@color/new_grey_color"
-                        android:textSize="18sp" />
+                        android:layout_marginTop="16dp"
+                        app:passwordToggleEnabled="true"
+                        android:background="@drawable/bgedittext">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/helvlight_regular"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:paddingStart="14dp"
+                            android:paddingLeft="14dp"
+                            android:textSize="16sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/etRePassword"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/letRePassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:backgroundTint="@color/white"
-                        android:fontFamily="@font/ebrima"
-                        android:gravity="start"
-                        android:hint="@string/re_password"
-                        android:inputType="textPassword"
-                        android:textColorHint="@color/new_grey_color"
-                        android:textSize="18sp" />
+                        android:layout_marginTop="16dp"
+                        app:passwordToggleEnabled="true"
+                        android:background="@drawable/bgedittext">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRePassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/helvlight_regular"
+                            android:hint="@string/re_password"
+                            android:background="@android:color/transparent"
+                            android:inputType="textPassword"
+                            android:paddingStart="14dp"
+                            android:paddingLeft="14dp"
+                            android:textSize="16sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
@@ -107,15 +126,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linLayout"
-                android:layout_marginStart="25dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginLeft="28dp"
                 android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:fontFamily="@font/ebrima"
+                    android:fontFamily="@font/helvlight_regular"
                     android:gravity="start"
                     android:text="@string/app_terms_msg"
                     android:textColor="@color/new_grey_color"
@@ -133,8 +155,8 @@
                         android:id="@+id/tvTerms"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:fontFamily="@font/ebrimabd"
+                        android:layout_gravity="start|bottom"
+                        android:fontFamily="@font/helvatikabold"
                         android:text="@string/terms"
                         android:textColor="@color/app_name_color"
                         android:textSize="16sp" />
@@ -145,7 +167,7 @@
                         android:layout_gravity="start"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/ebrima"
+                        android:fontFamily="@font/helvlight_regular"
                         android:text="@string/and"
                         android:textColor="@color/new_grey_color"
                         android:textSize="16sp" />
@@ -154,10 +176,10 @@
                         android:id="@+id/tvPrivacy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:layout_gravity="start|bottom"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/ebrimabd"
+                        android:fontFamily="@font/helvatikabold"
                         android:text="@string/privacy_policy"
                         android:textColor="@color/app_name_color"
                         android:textSize="16sp"
@@ -169,11 +191,19 @@
                     android:id="@+id/tvSignUp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/ebrima"
+                    android:fontFamily="@font/helvlight_regular"
+                    android:paddingStart="18dp"
+                    android:paddingLeft="18dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="12dp"
+                    android:paddingEnd="18dp"
+                    android:paddingRight="18dp"
+                    android:layout_marginTop="36dp"
                     android:text="@string/sign_up"
                     android:textAllCaps="false"
-                    android:textColor="@color/app_name_color"
-                    android:textSize="28sp" />
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:background="@drawable/bgsignin"/>
 
             </LinearLayout>
 
@@ -193,22 +223,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
-                    android:fontFamily="@font/ebrima"
+                    android:gravity="bottom"
+                    android:fontFamily="@font/helvlight_regular"
                     android:text="@string/old_account"
                     android:textColor="@color/new_grey_color"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvSignIn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
+                    android:gravity="bottom"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:fontFamily="@font/ebrimabd"
+                    android:fontFamily="@font/helvatikabold"
                     android:text="@string/sign_in"
                     android:textColor="@color/new_grey_color"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -231,9 +263,6 @@
                     app:lottie_autoPlay="true"/>
 
             </RelativeLayout>
-
-
-
 
 </RelativeLayout>
 

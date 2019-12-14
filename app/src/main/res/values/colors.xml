@@ -24,4 +24,7 @@
     <color name="app_name_color">#4395FF</color>
     <color name="new_grey_color">#868686</color>
 
+    <!-- by yash -->
+    <color name="edittextbordercolor">#C5DEFF</color>
+
 </resources>

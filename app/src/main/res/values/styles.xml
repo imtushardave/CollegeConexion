@@ -10,7 +10,9 @@
         <!-- specify enter and exit transitions -->
         <item name="android:windowEnterTransition">@transition/slide</item>
         <item name="android:windowExitTransition">@transition/fade</item>
-
+        <!-- For making status bar white-->
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
     <!-- Edit Text Field Style.-->
     <style name="editTextFieldStyle">

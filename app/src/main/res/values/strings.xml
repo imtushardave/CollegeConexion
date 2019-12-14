@@ -1,4 +1,8 @@
 <resources>
+
+    <!-- 2.0 CC -->
+    <string name="Email">Email</string>
+
     <!-- Bottom Navigation Items Tittle-->
     <string name="app_name">College Conexion</string>
     <string name="home_name">Happenings</string>
