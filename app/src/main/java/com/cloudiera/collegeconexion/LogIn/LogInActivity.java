@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -42,7 +45,7 @@ public class LogInActivity extends AppCompatActivity {
 
     // Input Variables
     private EditText mEmail, mPassword;
-    private TextView mForgotPassword;
+    private TextView mForgotPassword, mSignUp;
     private ProgressDialog mProgressDialog;
     private RelativeLayout mProgress;
 
@@ -61,6 +64,7 @@ public class LogInActivity extends AppCompatActivity {
         mEmail = (EditText) findViewById(R.id.emailInput);
         mPassword = (EditText) findViewById(R.id.passwordInput);
         mForgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        mSignUp = findViewById(R.id.newAccount);
         mProgressDialog = new ProgressDialog(mContext);
         mProgress = findViewById(R.id.progress_login);
 
@@ -93,110 +97,36 @@ public class LogInActivity extends AppCompatActivity {
         // Initialise the log in Button
         final TextView btnLogIn = (TextView) findViewById(R.id.logInButton);
 
+        //  SETUP SUBMIT BUTTON
         btnLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String email = mEmail.getText().toString();
-
-                if (CheckInputs.isEmailValid(email)) {
-
-                    Log.i("Email :: ", email);
-
-                    String password = mPassword.getText().toString();
-                    Log.i("Password :: ", password);
-
-                    if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
-
-                        Toast.makeText(mContext, "You Must Fill Out The Fields", Toast.LENGTH_SHORT).show();
-
-                    } else {
-
-                        mProgress.setVisibility(View.VISIBLE);
-
-//                        mProgressDialog.setTitle("Signing In ");
-//                        mProgressDialog.setMessage("Please wait while we load your data");
-//                        mProgressDialog.setCanceledOnTouchOutside(false);
-//                        mProgressDialog.show();
-
-                        mAuth.signInWithEmailAndPassword(email, password)
-                                .addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
-                                        if (!task.isSuccessful()) {
-
-                                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-
-                                            Toast.makeText(LogInActivity.this, R.string.auth_failed,
-                                                    Toast.LENGTH_LONG).show();
-                                            mProgress.setVisibility(View.GONE);
-                                            mProgressDialog.dismiss();
-
-                                        } else {
-
-                                            Log.w(TAG, "signInWithEmail: Logged In successful");
-
-                                            final String deviceToken = FirebaseInstanceId.getInstance().getToken();
-                                            final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                                            mUserDatabase.addValueEventListener(new ValueEventListener() {
-                                                @Override
-                                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                                    if (dataSnapshot.hasChild(userId)) {
-
-                                                        mUserDatabase.child(userId).child("device_token").setValue(deviceToken)
-                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                                    @Override
-                                                                    public void onComplete(@NonNull Task<Void> task) {
-
-                                                                        if (task.isSuccessful()) {
-
-                                                                                Log.d(TAG, "onComplete: Success ! Email is Verified");
-                                                                            mProgress.setVisibility(View.GONE);
-                                                                                Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-                                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                                                startActivity(intent);
-
-                                                                        } else {
-
-                                                                            Log.d(TAG, "onComplete: Something Went Wrong ");
-                                                                        }
-                                                                    }
-                                                                });
-                                                    } else {
-                                                        Log.d(TAG, "onDataChange:  Intent to Home Activity");
-                                                        mProgress.setVisibility(View.GONE);
-                                                        Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-                                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                        startActivity(intent);
-                                                    }
-
-                                                }
-
-                                                @Override
-                                                public void onCancelled(DatabaseError databaseError) {
-
-                                                }
-                                            });
-
-
-                                        }
-
-
-                                    }
-                                });
-                    }
-                } else {
-                    mEmail.setError("Email should be in right format");
-                }
+                progressLogIn();
             }
         });
 
+        //  ENABLE ENTER BUTTON ON KEYBOARD TO CALL SUBMIT BUTTON
+        mPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Log.i(TAG,"Enter pressed");
+                    progressLogIn();
+
+                }
+                return false;
+            }
+        });
+
+        //  SETUP SIGN UP BUTTON
+        mSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(mContext, NewAccountActivity.class));
+
+            }
+        });
 
         /**
          * If the user Logged in then Navigate to the Home Activity and call finish()
@@ -208,5 +138,107 @@ public class LogInActivity extends AppCompatActivity {
         }
     }
 
+
+
+    private void progressLogIn(){
+        String email = mEmail.getText().toString();
+
+        if (CheckInputs.isEmailValid(email)) {
+
+            Log.i("Email :: ", email);
+
+            String password = mPassword.getText().toString();
+            Log.i("Password :: ", password);
+
+            if (TextUtils.isEmpty(email) && TextUtils.isEmpty(password)) {
+
+                Toast.makeText(mContext, "You Must Fill Out The Fields", Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                mProgress.setVisibility(View.VISIBLE);
+
+//                        mProgressDialog.setTitle("Signing In ");
+//                        mProgressDialog.setMessage("Please wait while we load your data");
+//                        mProgressDialog.setCanceledOnTouchOutside(false);
+//                        mProgressDialog.show();
+
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                                if (!task.isSuccessful()) {
+
+                                    Log.w(TAG, "signInWithEmail:failed", task.getException());
+
+                                    Toast.makeText(LogInActivity.this, R.string.auth_failed,
+                                            Toast.LENGTH_LONG).show();
+                                    mProgress.setVisibility(View.GONE);
+                                    mProgressDialog.dismiss();
+
+                                } else {
+
+                                    Log.w(TAG, "signInWithEmail: Logged In successful");
+
+                                    final String deviceToken = FirebaseInstanceId.getInstance().getToken();
+                                    final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                    mUserDatabase.addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.hasChild(userId)) {
+
+                                                mUserDatabase.child(userId).child("device_token").setValue(deviceToken)
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+
+                                                                if (task.isSuccessful()) {
+
+                                                                    Log.d(TAG, "onComplete: Success ! Email is Verified");
+                                                                    mProgress.setVisibility(View.GONE);
+                                                                    Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
+                                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                                    startActivity(intent);
+
+                                                                } else {
+
+                                                                    Log.d(TAG, "onComplete: Something Went Wrong ");
+                                                                }
+                                                            }
+                                                        });
+                                            } else {
+                                                Log.d(TAG, "onDataChange:  Intent to Home Activity");
+                                                mProgress.setVisibility(View.GONE);
+                                                Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+
+                                }
+
+
+                            }
+                        });
+            }
+        } else {
+            mEmail.setError("Email should be in right format");
+        }
+
+    }
 
 }

@@ -45,41 +45,5 @@
         android:textStyle="bold" />
 
 
-    <Button
-        android:id="@+id/sign_in_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/splash_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="@color/white"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:text="Sign In"
-        android:textAllCaps="true"
-        android:textColor="@color/appBlueTheme"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/create_account_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sign_in_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/appBlueTheme"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:text="Create a new account "
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold" />
-
 
 </RelativeLayout>

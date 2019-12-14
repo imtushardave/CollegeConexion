@@ -5,15 +5,18 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AutoCompleteTextView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +32,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,13 +52,14 @@ public class NewAccountActivity extends AppCompatActivity{
 
     //XML FIELDS
     private EditText mEmail, mPassword, mRePassword,mFirstName, mLastName, mUsername;
-    private AutoCompleteTextView mCollegeName;
+    private Spinner mCollegeSpinner;
     private TextView mSignUp, mTerms, mPrivacy, mSignIn;
     private RelativeLayout mProgress, mStep2;
     private LinearLayout mFinalButton;
 
     // OTHER VARIABLES
     private String email, password, rePassword, firstname, lastname, username, collegename;
+    private ArrayList<String> mCollegeList;
 
 
     @Override
@@ -89,7 +95,9 @@ public class NewAccountActivity extends AppCompatActivity{
         mFirstName = findViewById(R.id.etFirstname);
         mLastName = findViewById(R.id.etLastname);
         mUsername = findViewById(R.id.etUsername);
-        mCollegeName = findViewById(R.id.etCollegeName);
+
+        mCollegeSpinner = findViewById(R.id.spiCollegeName);
+        mCollegeList = new ArrayList<>();
 
         mTerms = findViewById(R.id.tvTerms);
         mPrivacy = findViewById(R.id.tvPrivacy);
@@ -98,7 +106,47 @@ public class NewAccountActivity extends AppCompatActivity{
         mSignUp = findViewById(R.id.tvSignUp);
         mFinalButton = findViewById(R.id.finalButton);
 
+        setupCollegeList();        // GET COLLEGE LIST FROM THE DATABASE
         getWidgetsData();         // GET DATA FROM WIDGETS
+
+
+    }
+
+    private void setupCollegeList() {
+
+        //QUERYING LIST OF COLLEGE PROFILES
+        firebaseFirestore.collection("CollegeProfile")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        //ADDING ALL COLLEGE NAMES INTO THE COLLEGE LIST
+                        for(DocumentSnapshot collegeProfile : queryDocumentSnapshots.getDocuments()){
+                                mCollegeList.add(collegeProfile.get("name").toString());
+                        }
+
+                        //SETUP COLLEGE LIST TO THE SPINNER
+                        setupCollegeListAdapter(mCollegeList);
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(mContext, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+
+    private void setupCollegeListAdapter(ArrayList<String> mCollegeList) {
+
+        Log.d(TAG, "setupCollegeListAdapter: " + mCollegeList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, mCollegeList);
+
+        mCollegeSpinner.setAdapter(adapter);
 
     }
 
@@ -135,6 +183,17 @@ public class NewAccountActivity extends AppCompatActivity{
 
     private void getWidgetsData() {
 
+        //  SETUP THE SIGNIN BUTTON
+        mSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(mContext, LogInActivity.class));
+
+            }
+        });
+
+        // SETTING ON-CLICK LISTENER FOR SIGN-UP BUTTON
         mSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +210,7 @@ public class NewAccountActivity extends AppCompatActivity{
             }
         });
 
-
+        // SETTING ON-CLICK LISTENER FOR LET'S CONNECT BUTTON
         mFinalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -200,6 +259,7 @@ public class NewAccountActivity extends AppCompatActivity{
         });
     }
 
+
     private void startRegistration() {
 
         // CREATING NEW ACCOUNT FOR THE USER
@@ -213,6 +273,7 @@ public class NewAccountActivity extends AppCompatActivity{
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: Authstate Changed :: " + mAuth.getCurrentUser().getUid());
 
+                            //STORE THE USERNAME INTO DATABASE
                             Map<String,Object> usernameMap=new HashMap<String, Object>();
                             usernameMap.put("username",username);
                             usernameMap.put("userId", mAuth.getCurrentUser().getUid());
@@ -224,6 +285,7 @@ public class NewAccountActivity extends AppCompatActivity{
                                         @Override
                                         public void onSuccess(Void aVoid) {
 
+                                            //SENDING VERIFICATION EMAIL
                                             task.getResult()
                                                     .getUser()
                                                     .sendEmailVerification()
@@ -233,6 +295,7 @@ public class NewAccountActivity extends AppCompatActivity{
 
                                                             String userUid = task.getResult().getUser().getUid();
 
+                                                            //CREATING DATABASE FOR THE USER
                                                             Map<String, Object> userMap = new HashMap<>();
                                                             userMap.put("id", userUid);
                                                             userMap.put("fname", firstname);
