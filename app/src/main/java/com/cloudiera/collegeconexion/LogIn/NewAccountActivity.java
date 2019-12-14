@@ -55,7 +55,7 @@ public class NewAccountActivity extends AppCompatActivity{
     private Spinner mCollegeSpinner;
     private TextView mSignUp, mTerms, mPrivacy, mSignIn;
     private RelativeLayout mProgress, mStep2;
-    private LinearLayout mFinalButton;
+    private TextView mFinalButton;
 
     // OTHER VARIABLES
     private String email, password, rePassword, firstname, lastname, username, collegename;
