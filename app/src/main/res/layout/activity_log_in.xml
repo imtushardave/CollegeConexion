@@ -100,15 +100,14 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/SignInButtonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mainLayout"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="16dp">
 
         <TextView
             android:id="@+id/logInButton"
@@ -129,40 +128,48 @@
 
         <TextView
             android:id="@+id/forgotPassword"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:padding="8dp"
             android:fontFamily="@font/helvlight_regular"
             android:gravity="end"
             android:text="@string/forgotPassword"
             android:textColor="@color/new_grey_color"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bggray"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/newAccountLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="8dp">
 
         <TextView
+            android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:fontFamily="@font/helvlight_regular"
             android:text="@string/new_account"
             android:textColor="@color/new_grey_color"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"/>
 
         <TextView
             android:id="@+id/newAccount"
+            android:layout_toRightOf="@+id/info"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="start|bottom"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
@@ -170,9 +177,11 @@
             android:text="@string/sign_up"
             android:textColor="@color/new_grey_color"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:background="@drawable/bggray"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/progress_login"

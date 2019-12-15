@@ -152,7 +152,9 @@
                 android:hint="@string/college_help"
                 android:backgroundTint="@color/white"
                 android:textColorHint="@color/new_grey_color"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:padding="8dp"
+                android:background="@drawable/bggray"/>
 
         </LinearLayout>
 

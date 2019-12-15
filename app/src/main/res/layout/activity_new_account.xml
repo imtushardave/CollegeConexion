@@ -159,12 +159,16 @@
                         android:fontFamily="@font/helvatikabold"
                         android:text="@string/terms"
                         android:textColor="@color/app_name_color"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:padding="8dp"
+                        android:clickable="true"
+                        android:background="@drawable/bggray"/>
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_gravity="start"
+                        android:gravity="center"
                         android:layout_marginStart="5dp"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="@font/helvlight_regular"
@@ -183,7 +187,10 @@
                         android:text="@string/privacy_policy"
                         android:textColor="@color/app_name_color"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:padding="8dp"
+                        android:background="@drawable/bggray"/>
 
                 </LinearLayout>
 
@@ -211,19 +218,18 @@
                 android:id="@+id/oldAccountLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/signUpPrivacy"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginBottom="25dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
-                    android:gravity="bottom"
+                    android:gravity="center"
                     android:fontFamily="@font/helvlight_regular"
                     android:text="@string/old_account"
                     android:textColor="@color/new_grey_color"
@@ -235,13 +241,12 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="start"
                     android:gravity="bottom"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="5dp"
                     android:fontFamily="@font/helvatikabold"
                     android:text="@string/sign_in"
                     android:textColor="@color/new_grey_color"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:background="@drawable/bggray"/>
 
             </LinearLayout>
 
