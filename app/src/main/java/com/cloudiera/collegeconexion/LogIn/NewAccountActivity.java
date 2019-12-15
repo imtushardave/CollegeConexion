@@ -144,7 +144,7 @@ public class NewAccountActivity extends AppCompatActivity{
 
         Log.d(TAG, "setupCollegeListAdapter: " + mCollegeList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (this, android.R.layout.select_dialog_item, mCollegeList);
+                (this, R.layout.custom_spinner_item, mCollegeList);
 
         mCollegeSpinner.setAdapter(adapter);
 
