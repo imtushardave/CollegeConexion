@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_gravity="center"
-    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-
 
     <TextView
         android:id="@+id/tag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="150dp"
         android:gravity="center"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="College Conexion"
+        android:text="College\nConexion"
         android:textColor="@color/app_name_color"
         android:fontFamily="@font/helvatikabold"
-        android:textSize="24dp"
+        android:textSize="36sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:layout_margin="20dp"
-        android:id="@+id/imgLogo"
+    <View
+        android:id="@+id/line"
         android:layout_below="@+id/tag"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_width="180dp"
+        android:layout_height="1.5dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/banner" />
+        android:layout_marginTop="8dp"
+        android:background="@color/edittextbordercolor"/>
 
     <TextView
         android:id="@+id/splash_title"
@@ -37,17 +33,35 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/imgLogo"
+        android:layout_below="@+id/line"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:text="Live to connect, Share to inspire"
+        android:text="Live to connect,\nShare to inspire"
         android:textColor="@color/app_name_color"
-        android:fontFamily="@font/helvatikabold"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:fontFamily="@font/helvlight_regular"
+        android:textSize="22sp" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imgLogo"
+        android:layout_below="@+id/splash_title"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:lottie_rawRes="@raw/connection"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
 
 
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="with ❤ from Believe."
+        android:fontFamily="@font/helvlight_regular"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"/>
 
 </RelativeLayout>

@@ -117,7 +117,7 @@ public class EntryActivity extends AppCompatActivity {
                 }
 
             }
-        },1200);
+        },1800);
 
     }
 

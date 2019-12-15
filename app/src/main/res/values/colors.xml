@@ -26,5 +26,9 @@
 
     <!-- by yash -->
     <color name="edittextbordercolor">#C5DEFF</color>
+    <color name="newblue">#35A7FF</color>
+    <color name="newred">#6BF178</color>
+    <color name="newgreen">#FF5964</color>
+    <color name="newyellow">#FFE74C</color>
 
 </resources>
