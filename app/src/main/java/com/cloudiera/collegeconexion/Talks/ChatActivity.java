@@ -1,111 +1,111 @@
-//package com.cloudiera.collegeconexion.Talks;
-//
-//import android.Manifest;
-//import android.animation.Animator;
-//import android.animation.AnimatorListenerAdapter;
-//import android.app.ProgressDialog;
-//import android.content.Context;
-//import android.content.DialogInterface;
-//import android.content.Intent;
-//import android.content.pm.PackageManager;
-//import android.graphics.Bitmap;
-//import android.media.MediaPlayer;
-//import android.net.Uri;
-//import android.os.Build;
-//import android.provider.MediaStore;
-//import android.provider.Settings;
-//import androidx.annotation.NonNull;
-//import androidx.core.content.ContextCompat;
-//import androidx.appcompat.app.AlertDialog;
-//import androidx.appcompat.app.AppCompatActivity;
-//import android.os.Bundle;
-//import androidx.cardview.widget.CardView;
-//import androidx.recyclerview.widget.LinearLayoutManager;
-//import androidx.appcompat.widget.PopupMenu;
-//import androidx.recyclerview.widget.RecyclerView;
-//import android.text.TextUtils;
-//import android.util.Log;
-//import android.view.MenuItem;
-//import android.view.View;
-//import android.view.animation.AccelerateDecelerateInterpolator;
-//import android.widget.EditText;
-//import android.widget.ImageButton;
-//import android.widget.ImageView;
-//import android.widget.LinearLayout;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//import com.cloudiera.collegeconexion.CollegeConexion;
-//import com.cloudiera.collegeconexion.Friends.ShowingFriendsProfile;
-//import com.cloudiera.collegeconexion.Utils.CheckInputs;
-//import com.cloudiera.collegeconexion.LogIn.EntryActivity;
-//import com.cloudiera.collegeconexion.Models.Messages;
-//import com.cloudiera.collegeconexion.R;
-//import com.cloudiera.collegeconexion.ConnectionReceiver;
-//import com.cloudiera.collegeconexion.Utils.GetTimeAgo;
-//import com.cloudiera.collegeconexion.Utils.MessageAdapter;
-//import com.google.android.gms.tasks.OnCompleteListener;
-//import com.google.android.gms.tasks.OnFailureListener;
-//import com.google.android.gms.tasks.OnSuccessListener;
-//import com.google.android.gms.tasks.Task;
-//import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.FirebaseUser;
-//import com.google.firebase.database.ChildEventListener;
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.ServerValue;
-//import com.google.firebase.database.ValueEventListener;
-//import com.google.firebase.storage.FirebaseStorage;
-//import com.google.firebase.storage.OnProgressListener;
-//import com.google.firebase.storage.StorageReference;
-//import com.google.firebase.storage.UploadTask;
-//import com.squareup.picasso.Callback;
-//import com.squareup.picasso.NetworkPolicy;
-//import com.squareup.picasso.Picasso;
-//
-//import java.io.ByteArrayOutputStream;
-//import java.util.ArrayList;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//
-//import de.hdodenhof.circleimageview.CircleImageView;
-//import io.codetail.animation.ViewAnimationUtils;
-//
-//
-//@SuppressWarnings("VisibleForTests")
-//public class ChatActivity extends AppCompatActivity implements View.OnClickListener, ConnectionReceiver.ConnectionReceiverListener {
-//
-//    private static final String TAG = "ChatActivity";
-//    private static final int CAMERA_REQUEST_CODE = 1;
-//    private static final int PDF_REQUEST_CODE = 11;
-//    private static final int GALLERY_REQUEST_CODE = 111;
-//    private static final int AUDIO_REQUEST_CODE = 112;
-//
-//    private String imageId;
-//    private ProgressDialog mProgress;
-//    private Context mContext = ChatActivity.this;
-//    boolean hidden = true;
-//    private String mChatUser;
-//    private TextView mLastSeen;
-//    private CircleImageView mChatImage;
-//    private String mCurrentUser;
-//    private EditText chatMessage;
-//    private RecyclerView mMessageList;
-//    private LinearLayout mRevealItems;
-//    private final List<Messages> messagesList = new ArrayList<>();
-//    private MessageAdapter mAdapter;
-//    //Firebase
-//    private DatabaseReference mRootRef, myRef;
-//    private FirebaseAuth mAuth;
-//    private StorageReference mChatAttachmentStorage;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_chat);
+package com.cloudiera.collegeconexion.Talks;
+
+import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.MediaStore;
+import android.provider.Settings;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.recyclerview.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cloudiera.collegeconexion.CollegeConexion;
+import com.cloudiera.collegeconexion.Friends.ShowingFriendsProfile;
+import com.cloudiera.collegeconexion.Utils.CheckInputs;
+import com.cloudiera.collegeconexion.LogIn.EntryActivity;
+import com.cloudiera.collegeconexion.Models.Messages;
+import com.cloudiera.collegeconexion.R;
+import com.cloudiera.collegeconexion.ConnectionReceiver;
+import com.cloudiera.collegeconexion.Utils.GetTimeAgo;
+import com.cloudiera.collegeconexion.Utils.MessageAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.codetail.animation.ViewAnimationUtils;
+
+
+@SuppressWarnings("VisibleForTests")
+public class ChatActivity extends AppCompatActivity {
+
+    private static final String TAG = "ChatActivity";
+    private static final int CAMERA_REQUEST_CODE = 1;
+    private static final int PDF_REQUEST_CODE = 11;
+    private static final int GALLERY_REQUEST_CODE = 111;
+    private static final int AUDIO_REQUEST_CODE = 112;
+
+    private String imageId;
+    private ProgressDialog mProgress;
+    private Context mContext = ChatActivity.this;
+    boolean hidden = true;
+    private String mChatUser;
+    private TextView mLastSeen;
+    private CircleImageView mChatImage;
+    private String mCurrentUser;
+    private EditText chatMessage;
+    private RecyclerView mMessageList;
+    private LinearLayout mRevealItems;
+    private final List<Messages> messagesList = new ArrayList<>();
+    private MessageAdapter mAdapter;
+    //Firebase
+    private DatabaseReference mRootRef, myRef;
+    private FirebaseAuth mAuth;
+    private StorageReference mChatAttachmentStorage;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
 //        checkConnection();
 //        mRevealItems = (LinearLayout) findViewById(R.id.reveal_items);
 //        mRevealItems.setVisibility(View.INVISIBLE);
@@ -291,10 +291,10 @@
 //                sendMessage();
 //            }
 //        });
-//
-//    }
-//
-//
+
+    }
+
+
 //    private void loadMessages() {
 //
 //        mRootRef.child("messages").child(mCurrentUser).child(mChatUser).addChildEventListener(new ChildEventListener() {
@@ -934,5 +934,5 @@
 ////
 ////
 ////    }
-//
-//}
+
+}
