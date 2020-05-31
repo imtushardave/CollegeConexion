@@ -22,10 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.codetail.animation.ViewAnimationUtils;
-import yalantis.com.sidemenu.interfaces.Resourceble;
-import yalantis.com.sidemenu.interfaces.ScreenShotable;
-import yalantis.com.sidemenu.model.SlideMenuItem;
-import yalantis.com.sidemenu.util.ViewAnimator;
 
 public class MainActivity extends AppCompatActivity {
 
