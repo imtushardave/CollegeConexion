@@ -5,21 +5,17 @@ import android.content.DialogInterface;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.cloudiera.collegeconexion.CollegeConexion;
 import com.cloudiera.collegeconexion.Home.HomeActivity;
+import com.cloudiera.collegeconexion.Home.MainActivity;
 import com.cloudiera.collegeconexion.R;
-import com.cloudiera.collegeconexion.ConnectionReceiver;
 import com.cloudiera.collegeconexion.Utils.Database.UserDatabaseHelper;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,8 +33,6 @@ public class EntryActivity extends AppCompatActivity {
     // Activity Context
     private Context mContext = EntryActivity.this;
 
-    FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,19 +40,18 @@ public class EntryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_entry);
 
         //SPLASH SCREEN
-
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
 
-                //IF USER IS NOT SIGNNED IN THEN SEND HIM TO LOGIN ACTIVITY
+                //IF USER IS NOT SIGNED IN THEN SEND HIM TO LOGIN ACTIVITY
                 if(FirebaseAuth.getInstance().getCurrentUser()==null){
                     startActivity(new Intent(mContext, LogInActivity.class));
                     finish();
 
                 }else{
 
-                    // IF USER IS SIGNNED IN THEN SEND HIM TO HOME ACIVITY
+                    // IF USER IS SIGNED IN THEN SEND HIM TO Main ACIVITY
                     if(isOnline()){
 
                         //IF UESER IS CONNECTED TO INTERNET, AUTO RE-SIGNIN
@@ -66,8 +59,8 @@ public class EntryActivity extends AppCompatActivity {
                         Cursor rs = userHelper.getData(1);
                         rs.moveToFirst();
 
-                        String email = rs.getString(rs.getColumnIndex(UserDatabaseHelper.CONTACTS_COLUMN_EMAIL));
-                        String pass = rs.getString(rs.getColumnIndex(UserDatabaseHelper.CONTACTS_COLUMN_PASS));
+                        String email = rs.getString(rs.getColumnIndex(UserDatabaseHelper.USERS_COLUMN_EMAIL));
+                        String pass = rs.getString(rs.getColumnIndex(UserDatabaseHelper.USERS_COLUMN_PASS));
 
                         if (!rs.isClosed()) {
                             rs.close();
@@ -84,7 +77,7 @@ public class EntryActivity extends AppCompatActivity {
                                     public void onSuccess(AuthResult authResult) {
 
                                         // SEND USER TO THE HOME ACTIVITY
-                                        Intent intent = new Intent(mContext, HomeActivity.class);
+                                        Intent intent = new Intent(mContext, MainActivity.class);
                                         startActivity(intent);
                                         finish();
 
@@ -108,7 +101,7 @@ public class EntryActivity extends AppCompatActivity {
                     }else{
 
                         // SEND USER TO HOME ACTIVITY, IF USER IS NOT CONNECTED TO INTERNET
-                        Intent intent = new Intent(mContext, HomeActivity.class);
+                        Intent intent = new Intent(mContext, MainActivity.class);
                         startActivity(intent);
                         finish();
 
@@ -122,14 +115,12 @@ public class EntryActivity extends AppCompatActivity {
     }
 
 
+
     public boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
-
-
-
 
 }

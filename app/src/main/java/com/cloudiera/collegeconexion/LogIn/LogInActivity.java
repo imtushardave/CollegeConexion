@@ -2,6 +2,7 @@ package com.cloudiera.collegeconexion.LogIn;
 
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cloudiera.collegeconexion.Home.HomeActivity;
+import com.cloudiera.collegeconexion.Home.MainActivity;
 import com.cloudiera.collegeconexion.R;
 import com.cloudiera.collegeconexion.Utils.CheckInputs;
 import com.cloudiera.collegeconexion.Utils.Database.UserDatabaseHelper;
@@ -68,7 +70,7 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        // PREVENT KEYBOARD FROM OPNEING WHEN ACTIVITY IS STARTED
+        // PREVENT KEYBOARD FROM OPENING WHEN ACTIVITY IS STARTED
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         // INITIALIZE ALL THE VARIABLES AND FIELDS USED IN THE ACTIVITY
@@ -102,7 +104,7 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
-   //   THIS FUNCTION SETUP LISTENERS FOR DIFFERENT FIELDS AND VAIRABLES
+    //   THIS FUNCTION SETUP LISTENERS FOR DIFFERENT FIELDS AND VAIRABLES
     private void setupListeners() {
 
         //  SETUP SUBMIT BUTTON
@@ -118,7 +120,7 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Log.i(TAG,"Enter pressed");
+                    Log.i(TAG, "Enter pressed");
                     progressSignIn();
 
                 }
@@ -170,13 +172,13 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     //THIS FUNCTION IS USED TO PERFORM SIGNIN PROCESS
-    private void progressSignIn(){
+    private void progressSignIn() {
 
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
 
         // VALIDATING ALL THE INPUTS
-        if (validateInputs(email,password)) {
+        if (validateInputs(email, password)) {
 
             //SETUP PROGRESS BAR
             mProgress.setVisibility(View.VISIBLE);
@@ -202,121 +204,91 @@ public class LogInActivity extends AppCompatActivity {
                                     final String token_id = task.getResult().getToken();
                                     final String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                                    //  UPDATING TOKEN VALUES TO THE DATABASE
-                                    final Map<String, Object> tokenMap = new HashMap<>();
-                                    tokenMap.put("token_ids", FieldValue.arrayUnion(token_id));
+                                    DatabaseReference rootRef = mUserDatabase.child(userId);
 
-                                    firebaseFirestore.collection("Users").document(userId)
-                                            .update(tokenMap)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
+                                    rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.getValue() == null) {
+                                                // The child doesn't exist
+                                                Log.d(TAG, "onDataChange:  Intent to Home Activity");
+                                                mProgress.setVisibility(View.GONE);
+                                                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
 
-                                                    // RETRIVING ALL THE VALUES OF USER TO STORE IT LOCALLY
-                                                    firebaseFirestore.collection("Users").document(userId)
-                                                            .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                                        @Override
-                                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            } else {
+                                                //  UPDATING TOKEN VALUES TO THE DATABASE
+                                                mUserDatabase.child(userId).child("device_token").setValue(token_id)
+                                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
 
-                                                            // STORING ALL THE FIELDS LOCALLY
-                                                            String username = documentSnapshot.getString("username");
-                                                            String fname = documentSnapshot.getString("fname");
-                                                            String lname = documentSnapshot.getString("lname");
-                                                            String email = documentSnapshot.getString("email");
-                                                            String image = documentSnapshot.getString("image");
-                                                            String password = mPassword.getText().toString();
-                                                            String college_id = documentSnapshot.getString("college_id");
-                                                            String bio = documentSnapshot.getString("bio");
-
-                                                            userHelper.insertContact(username, fname,lname, email,
-                                                                    image, password, college_id, bio);
-
-                                                            // DISABLE PROGRESS BAR
-                                                            mProgress.setVisibility(View.GONE);
-
-                                                            // REDIRECT TO HOMEACTIVITY
-                                                            Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-                                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                            startActivity(intent);
-                                                            finish();
+                                                                // STORING ALL THE FIELDS LOCALLY
+                                                                String bio = dataSnapshot.child("bio").toString();
+                                                                String branch = dataSnapshot.child("branch").toString();
+                                                                String name = dataSnapshot.child("profile_name").toString();
+                                                                String college_id = dataSnapshot.child("college_id").toString();
+                                                                String dob = dataSnapshot.child("dob").toString();
+                                                                String gender = dataSnapshot.child("gender").toString();
+                                                                String email = dataSnapshot.child("email").toString();
+                                                                String password = mPassword.getText().toString();
+                                                                String phone = dataSnapshot.child("phone_number").toString();
+                                                                String image = dataSnapshot.child("profile_image").toString();
+                                                                String imageThumbnail = dataSnapshot.child("profile_img_thumb").toString();
+                                                                String roll_no = dataSnapshot.child("roll_no").toString();
+                                                                String course = dataSnapshot.child("course").toString();
+                                                                String verificationId = dataSnapshot.child("id_image").toString();
 
 
-                                                        }
-                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            mAuth.signOut();
-                                                            mProgress.setVisibility(View.GONE);
-                                                            Log.e("Error", ".." + e.getMessage());
-                                                            Toast.makeText(mContext, "Something Went Wrong!", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
+                                                                userHelper.insertContact(userId, bio, branch, name,college_id,dob,gender, email, password,
+                                                                        phone,image, imageThumbnail, roll_no, course, verificationId);
 
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    mAuth.signOut();
-                                                    mProgress.setVisibility(View.GONE);
-                                                    Log.e(TAG, "onFailure: " + e.getMessage() );
-                                                    Toast.makeText(mContext, "Something went wrong!", Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
+                                                                // DISABLE PROGRESS BAR
+                                                                mProgress.setVisibility(View.GONE);
+
+                                                                // REDIRECT TO HOMEACTIVITY
+                                                                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                                startActivity(intent);
+                                                                finish();
+
+                                                            }
+                                                        })
+                                                        .addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                mAuth.signOut();
+                                                                mProgress.setVisibility(View.GONE);
+                                                                Log.e("Error fetching data", ".." + e.getMessage());
+                                                                Toast.makeText(mContext, "Something Went Wrong!", Toast.LENGTH_SHORT).show();
+
+                                                            }
+                                                        });
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                            mAuth.signOut();
+                                            mProgress.setVisibility(View.GONE);
+                                            Log.e(TAG, "onFailure: " + databaseError.getMessage());
+                                            Toast.makeText(mContext, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
 
                                 }
                             });
 
-
-//                            mUserDatabase.addValueEventListener(new ValueEventListener() {
-//                                @Override
-//                                public void onDataChange(DataSnapshot dataSnapshot) {
-//                                    if (dataSnapshot.hasChild(userId)) {
-//
-//                                        mUserDatabase.child(userId).child("device_token").setValue(deviceToken)
-//                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                                    @Override
-//                                                    public void onComplete(@NonNull Task<Void> task) {
-//
-//                                                        if (task.isSuccessful()) {
-//
-//                                                            Log.d(TAG, "onComplete: Success ! Email is Verified");
-//                                                            mProgress.setVisibility(View.GONE);
-//                                                            Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-//                                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                                                            startActivity(intent);
-//
-//                                                        } else {
-//
-//                                                            Log.d(TAG, "onComplete: Something Went Wrong ");
-//                                                        }
-//                                                    }
-//                                                });
-//                                    } else {
-//                                        Log.d(TAG, "onDataChange:  Intent to Home Activity");
-//                                        mProgress.setVisibility(View.GONE);
-//                                        Intent intent = new Intent(LogInActivity.this, HomeActivity.class);
-//                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                                        startActivity(intent);
-//                                    }
-//
-//                                }
-//
-//                                @Override
-//                                public void onCancelled(DatabaseError databaseError) {
-//
-//                                }
-//                            });
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.w(TAG, "signInWithEmail:failed", e);
-
                             Toast.makeText(LogInActivity.this, R.string.auth_failed, Toast.LENGTH_LONG).show();
                             mProgress.setVisibility(View.GONE);
                         }

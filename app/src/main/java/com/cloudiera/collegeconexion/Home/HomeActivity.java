@@ -66,7 +66,6 @@ public class HomeActivity extends AppCompatActivity  implements ConnectionReceiv
     private  Context mContext;
     private static final String TAG = "HomeActivity";
     private static final int ACTIVITY_NUM = 0;
-    private FloatingActionButton addPostBtn;
     private RecyclerView mHappenings;
     private boolean mProcessLike = false;
 
@@ -102,7 +101,7 @@ public class HomeActivity extends AppCompatActivity  implements ConnectionReceiv
         setupToolbar();
 
 
-        addPostBtn = (FloatingActionButton)findViewById(R.id.create_post);
+        FloatingActionButton addPostBtn = findViewById(R.id.create_post);
         addPostBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -200,6 +199,8 @@ public class HomeActivity extends AppCompatActivity  implements ConnectionReceiv
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
 
+                            //TODO: Convert this dialog to final solution, tell the status of verificaiton and
+                            // show the features as per the need.
                             final Dialog myDialog = new Dialog(mContext);
                             myDialog.setContentView(R.layout.layout_account_status_popup);
                             myDialog.setCanceledOnTouchOutside(false);
@@ -277,6 +278,7 @@ public class HomeActivity extends AppCompatActivity  implements ConnectionReceiv
         mAuth.addAuthStateListener(mAuthListener);
         checkCurrentUser(mAuth.getCurrentUser());
 
+            //TODO: Implement this recycler view in the traditional style
           if(mAuth.getCurrentUser()!=null){
                     FirebaseRecyclerAdapter<HappeningsPost,PostViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<HappeningsPost, PostViewHolder>(
                             HappeningsPost.class,
@@ -575,7 +577,7 @@ public class HomeActivity extends AppCompatActivity  implements ConnectionReceiv
         }
     }
 
-
+    // TODO: put these permission at required place
     private void verifyPermissions(){
 
         String[] permissions = {android.Manifest.permission.CAMERA,

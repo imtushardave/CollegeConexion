@@ -80,9 +80,8 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         }
 
-
-
     }
+
 
     public void setTotalLike(String push_key) {
 
@@ -106,7 +105,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         });
 
     }
-
 
 
     public void setDescription(String desc) {

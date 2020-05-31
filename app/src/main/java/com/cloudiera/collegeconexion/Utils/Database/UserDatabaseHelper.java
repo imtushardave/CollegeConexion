@@ -10,16 +10,24 @@ import androidx.annotation.Nullable;
 public class UserDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "CC_User_db";
-    public static final String CONTACTS_TABLE_NAME = "user";
-    public static final String CONTACTS_COLUMN_ID = "id";
-    public static final String CONTACTS_COLUMN_USERNAME = "username";
-    public static final String CONTACTS_COLUMN_FNAME = "fname";
-    public static final String CONTACTS_COLUMN_LNAME = "lname";
-    public static final String CONTACTS_COLUMN_EMAIL = "email";
-    public static final String CONTACTS_COLUMN_IMAGE = "image";
-    public static final String CONTACTS_COLUMN_PASS = "password";
-    public static final String CONTACTS_COLUMN_COLLEGE_ID = "college_id";
-    public static final String CONTACTS_COLUMN_BIO = "bio";
+    public static final String TABLE_NAME = "users";
+    public static final String USERS_COLUMN_ID = "id";
+
+    public static final String USERS_COLUMN_BIO = "bio";
+    public static final String USERS_COLUMN_BRANCH = "branch";
+    public static final String USERS_COLUMN_NAME = "name";
+    public static final String USERS_COLUMN_COLLEGE_ID = "college_id";
+    public static final String USERS_COLUMN_DOB = "dob";
+    public static final String USERS_COLUMN_GENDER = "gender";
+    public static final String USERS_COLUMN_EMAIL = "email";
+    public static final String USERS_COLUMN_PASS = "password";
+    public static final String USERS_COLUMN_PHONE = "phone";
+    public static final String USERS_COLUMN_IMAGE = "image";
+    public static final String USERS_COLUMN_IMAGE_THUMB = "image_thumb";
+    public static final String USERS_COLUMN_ROLL_NO = "roll_no";
+    public static final String USERS_COLUMN_COURSE = "course";
+    public static final String USERS_COLUMN_VERIFICATION_ID = "verification_id";
+
 
     public UserDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME , null, 1);
@@ -28,8 +36,21 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "CREATE TABLE user " + "(id integer PRIMARY KEY,username text, fname text, " +
-                        "lname text,email text,password text,image text,college_id text,bio text)"
+                "CREATE TABLE TABLE_NAME " + "(USERS_COLUMN_ID integer PRIMARY KEY," +
+                        "USERS_COLUMN_BIO text, " +
+                        "USERS_COLUMN_BRANCH text," +
+                        "USERS_COLUMN_NAME text," +
+                        "USERS_COLUMN_COLLEGE_ID text," +
+                        "USERS_COLUMN_DOB text," +
+                        "USERS_COLUMN_GENDER text," +
+                        "USERS_COLUMN_EMAIL text," +
+                        "USERS_COLUMN_PASS text," +
+                        "USERS_COLUMN_PHONE text," +
+                        "USERS_COLUMN_IMAGE text," +
+                        "USERS_COLUMN_IMAGE_THUMB text," +
+                        "USERS_COLUMN_ROLL_NO text," +
+                        "USERS_COLUMN_COURSE text," +
+                        "USERS_COLUMN_VERIFICATION_ID text)"
         );
     }
 
@@ -39,19 +60,43 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertContact(String username, String fname,String lname, String email, String image,
-                              String password, String college_id, String bio) {
+    public void insertContact(String id,
+                              String bio,
+                              String branch,
+                              String name,
+                              String college_id,
+                              String dob,
+                              String gender,
+                              String email,
+                              String password,
+                              String phone,
+                              String image,
+                              String imageThumb,
+                              String rollNo,
+                              String course,
+                              String verification_id) {
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("username", username);
-        contentValues.put("fname", fname);
-        contentValues.put("lname", lname);
-        contentValues.put("email", email);
-        contentValues.put("password", password);
-        contentValues.put("image", image);
-        contentValues.put("college_id", college_id);
-        contentValues.put("bio", bio);
+
+        contentValues.put(USERS_COLUMN_ID, id);
+        contentValues.put(USERS_COLUMN_BIO, bio);
+        contentValues.put(USERS_COLUMN_BRANCH, branch);
+        contentValues.put(USERS_COLUMN_NAME, name);
+        contentValues.put(USERS_COLUMN_COLLEGE_ID, college_id);
+        contentValues.put(USERS_COLUMN_DOB, dob);
+        contentValues.put(USERS_COLUMN_GENDER, gender);
+        contentValues.put(USERS_COLUMN_EMAIL, email);
+        contentValues.put(USERS_COLUMN_PASS, password);
+        contentValues.put(USERS_COLUMN_PHONE, phone);
+        contentValues.put(USERS_COLUMN_IMAGE, image);
+        contentValues.put(USERS_COLUMN_IMAGE_THUMB, imageThumb);
+        contentValues.put(USERS_COLUMN_ROLL_NO, rollNo);
+        contentValues.put(USERS_COLUMN_COURSE, course);
+        contentValues.put(USERS_COLUMN_VERIFICATION_ID, verification_id);
+
         db.insert("user", null, contentValues);
+
     }
 
     public Cursor getData(int id) {

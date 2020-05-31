@@ -134,6 +134,7 @@ public class NewAccountActivity extends AppCompatActivity{
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: ERROR" + e.getMessage());
                         Toast.makeText(mContext, "Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
                 });
